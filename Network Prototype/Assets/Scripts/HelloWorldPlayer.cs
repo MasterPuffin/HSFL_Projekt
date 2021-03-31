@@ -27,7 +27,7 @@ namespace HelloWorld {
         private Vector2 mouse;
 
         void Start() {
-            Camera.main.enabled = false;
+            //Camera.main.enabled = false;
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = rot.y;
             rotX = rot.x;
@@ -51,7 +51,7 @@ namespace HelloWorld {
 
         void Update() {
             if (IsLocalPlayer) {
-                Look();
+                //Look();
                 MovePlayer();
             }
         }
