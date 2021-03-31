@@ -10,6 +10,7 @@ namespace HelloWorld {
     public class HelloWorldPlayer : NetworkBehaviour {
         public NetworkVariableVector3 Position = new NetworkVariableVector3(new NetworkVariableSettings {
             WritePermission = NetworkVariablePermission.ServerOnly,
+            //WritePermission = NetworkVariablePermission.Everyone,
             ReadPermission = NetworkVariablePermission.Everyone
         });
 
@@ -23,19 +24,28 @@ namespace HelloWorld {
 
 
         public override void NetworkStart() {
+            var cubeRenderer = GetComponent<Renderer>();
+            if (IsLocalPlayer) {
+                cubeRenderer.material.SetColor("_Color", Color.green);
+            } else {
+                cubeRenderer.material.SetColor("_Color", Color.red);
+            }
+
+
             if (IsLocalPlayer) {
                 controller = gameObject.AddComponent<CharacterController>();
             }
+
 
             Move();
         }
 
         public void Move() {
             if (NetworkManager.Singleton.IsServer) {
-                /*
-                 var randomPosition = GetRandomPositionOnPlane();
-                transform.position = randomPosition;
-                */
+                //var randomPosition = GetRandomPositionOnPlane(Position.Value);
+                //transform.position = randomPosition;
+
+
                 Position.Value = transform.position;
             } else {
                 SubmitPositionRequestServerRpc();
@@ -51,15 +61,18 @@ namespace HelloWorld {
 
         [ServerRpc]
         void SubmitPositionRequestServerRpc(ServerRpcParams rpcParams = default) {
-            Position.Value = GetRandomPositionOnPlane();
+            //Position.Value = GetRandomPositionOnPlane(Position.Value);
+            Position.Value = transform.position;
         }
 
-        static Vector3 GetRandomPositionOnPlane() {
-            return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
+        static Vector3 GetRandomPositionOnPlane(Vector3 position = new Vector3()) {
+            //return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
+            return position + new Vector3(1, 0, 0);
         }
 
         void Update() {
             if (IsLocalPlayer) {
+                Debug.Log("IsLocalPlayer");
                 groundedPlayer = controller.isGrounded;
                 if (groundedPlayer && playerVelocity.y < 0) {
                     playerVelocity.y = 0f;
@@ -78,9 +91,11 @@ namespace HelloWorld {
                 }
                 */
 
+
                 playerVelocity.y += gravityValue * Time.deltaTime;
                 controller.Move(playerVelocity * Time.deltaTime);
             }
+
 
             Move();
             transform.position = Position.Value;
