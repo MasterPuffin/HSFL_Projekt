@@ -25,22 +25,23 @@ namespace HelloWorld {
 
         public override void NetworkStart() {
             controller = gameObject.AddComponent<CharacterController>();
-            Move();
         }
 
         public void Update() {
-            Move();
+            //Move();
+            transform.position = Position.Value;
         }
 
         public void Move() {
             if (NetworkManager.Singleton.IsServer) {
-                /*
+                
                 var randomPosition = GetRandomPositionOnPlane();
                 transform.position = randomPosition;
                 Position.Value = randomPosition;
-                */
-                DoMove();
+                
+                //DoMove();
             } else {
+                //DoMove();
                 SubmitPositionRequestServerRpc();
             }
         }
@@ -78,6 +79,8 @@ namespace HelloWorld {
 
             playerVelocity.y += gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
+
+            Position.Value = transform.position;
         }
 
         [ServerRpc]
