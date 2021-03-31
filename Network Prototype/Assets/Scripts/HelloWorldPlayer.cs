@@ -4,7 +4,6 @@ using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
 using MLAPI.NetworkVariable;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace HelloWorld {
@@ -16,6 +15,7 @@ namespace HelloWorld {
         private float playerSpeed = 2.0f;
         private float jumpHeight = 1.0f;
         private float gravityValue = -9.81f;
+        public bool jumping = false;
 
 
         public NetworkVariableVector3 Position = new NetworkVariableVector3(new NetworkVariableSettings {
@@ -48,6 +48,7 @@ namespace HelloWorld {
         //Movement
         public void OnJump() {
             Debug.Log("jump");
+            jumping = true;
         }
 
         public void OnMove(InputValue input) {
@@ -70,11 +71,10 @@ namespace HelloWorld {
             }
 
             // Changes the height position of the player..
-            /*
-            if (Input.GetButtonDown("Jump") && groundedPlayer) {
+            if (jumping && groundedPlayer) {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                jumping = false;
             }
-            */
 
             playerVelocity.y += gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);

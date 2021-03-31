@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using MLAPI;
 using MLAPI.Transports.UNET;
-using UnityEngine;
 
 namespace HelloWorld {
     public class HelloWorldManager : MonoBehaviour {
