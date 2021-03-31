@@ -5,6 +5,7 @@ using MLAPI;
 using MLAPI.Messaging;
 using MLAPI.NetworkVariable;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace HelloWorld {
     public class HelloWorldPlayer : NetworkBehaviour {
@@ -25,6 +26,18 @@ namespace HelloWorld {
             } else {
                 SubmitPositionRequestServerRpc();
             }
+        }
+
+        //Movement
+        public void OnJump() {
+            Debug.Log("jump");
+        }
+
+        public void OnMove(InputValue input) {
+            Vector2 inputVec = input.Get<Vector2>();
+
+            var moveVec = new Vector3(inputVec.x, 0, inputVec.y);
+            Debug.Log(moveVec);
         }
 
         [ServerRpc]
