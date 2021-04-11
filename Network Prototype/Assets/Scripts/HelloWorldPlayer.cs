@@ -30,13 +30,13 @@ namespace HelloWorld {
         private Vector2 mouse;
 
         void Start() {
-            Camera.main.enabled = false;
+            // Camera.main.enabled = false;
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = rot.y;
             rotX = rot.x;
             controller = GetComponent<CharacterController>();
             
-            Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OnMove(InputValue input) {
