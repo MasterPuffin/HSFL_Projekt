@@ -75,7 +75,7 @@ namespace HelloWorld {
             controller.Move(moveVec * Time.deltaTime * playerSpeed);
 
             if (moveVec != Vector3.zero) {
-                gameObject.transform.forward = moveVec;
+                gameObject.transform.position = moveVec;
             }
 
             // Changes the height position of the player..
