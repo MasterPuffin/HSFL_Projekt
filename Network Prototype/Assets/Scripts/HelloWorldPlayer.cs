@@ -12,9 +12,12 @@ namespace HelloWorld {
         public Vector3 moveVec;
         private CharacterController controller;
         private Vector3 playerVelocity;
+        
         private bool groundedPlayer;
-        private float playerSpeed = 2.0f;
-        private float jumpHeight = 1.0f;
+        
+        public float playerSpeed = 2.0f;
+        public float jumpHeight = 1.0f;
+        
         private float gravityValue = -9.81f;
         private bool jumping = false;
 
@@ -27,17 +30,18 @@ namespace HelloWorld {
         private Vector2 mouse;
 
         void Start() {
-            //Camera.main.enabled = false;
+            Camera.main.enabled = false;
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = rot.y;
             rotX = rot.x;
             controller = GetComponent<CharacterController>();
+            
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OnMove(InputValue input) {
             Vector2 inputVec = input.Get<Vector2>();
             moveVec = new Vector3(inputVec.x, 0, inputVec.y);
-            Debug.Log(moveVec);
         }
 
         public void OnJump() {
@@ -45,7 +49,6 @@ namespace HelloWorld {
         }
 
         public void OnCamera(InputValue input) {
-            Debug.Log(input.Get<Vector2>());
             mouse = input.Get<Vector2>();
         }
 
@@ -67,21 +70,16 @@ namespace HelloWorld {
         }
 
         private void MovePlayer() {
-            groundedPlayer = controller.isGrounded;
-
             if (moveVec != Vector3.zero) {
-                var moveDirection = transform.rotation * moveVec;
-                controller.Move(moveDirection * Time.deltaTime * playerSpeed);
+                controller.Move(transform.rotation * moveVec * (Time.deltaTime * playerSpeed));
             }
 
-            // if (moveVec != Vector3.zero) {
-            // gameObject.transform.position = moveVec;
-            // }
-
+            groundedPlayer = controller.isGrounded;
+            
             if (groundedPlayer && playerVelocity.y < 0) {
                 playerVelocity.y = 0f;
             }
-
+            
             // Changes the height position of the player..
             if (jumping && groundedPlayer) {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
