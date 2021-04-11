@@ -12,12 +12,12 @@ namespace HelloWorld {
         public Vector3 moveVec;
         private CharacterController controller;
         private Vector3 playerVelocity;
-        
+
         private bool groundedPlayer;
-        
+
         public float playerSpeed = 2.0f;
         public float jumpHeight = 1.0f;
-        
+
         private float gravityValue = -9.81f;
         private bool jumping = false;
 
@@ -30,13 +30,17 @@ namespace HelloWorld {
         private Vector2 mouse;
 
         void Start() {
-            // Camera.main.enabled = false;
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = rot.y;
             rotX = rot.x;
             controller = GetComponent<CharacterController>();
-            
+
             // Cursor.lockState = CursorLockMode.Locked;
+            
+            //Enable camera attached to player
+            if (IsLocalPlayer) {
+                transform.Find("PlayerCamera").gameObject.SetActive(true);
+            }
         }
 
         public void OnMove(InputValue input) {
@@ -75,11 +79,11 @@ namespace HelloWorld {
             }
 
             groundedPlayer = controller.isGrounded;
-            
+
             if (groundedPlayer && playerVelocity.y < 0) {
                 playerVelocity.y = 0f;
             }
-            
+
             // Changes the height position of the player..
             if (jumping && groundedPlayer) {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3663430298587661815
 Transform:
   m_ObjectHideFlags: 0
@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
+  playerSpeed: 2
+  jumpHeight: 1
   mouseSensitivity: 100
   clampAngle: 80
 --- !u!114 &5264597516646630089
