@@ -51,7 +51,7 @@ namespace HelloWorld {
 
         void Update() {
             if (IsLocalPlayer) {
-                //Look();
+                Look();
                 MovePlayer();
             }
         }
@@ -69,12 +69,15 @@ namespace HelloWorld {
         private void MovePlayer() {
             groundedPlayer = controller.isGrounded;
 
-            controller.Move(moveVec * Time.deltaTime * playerSpeed);
+            if (moveVec != Vector3.zero) {
+                var moveDirection = transform.TransformDirection(Vector3.forward) * playerSpeed;
+                controller.Move(moveDirection * Time.deltaTime * playerSpeed);
+            }
 
             // if (moveVec != Vector3.zero) {
-                // gameObject.transform.position = moveVec;
+            // gameObject.transform.position = moveVec;
             // }
-            
+
             if (groundedPlayer && playerVelocity.y < 0) {
                 playerVelocity.y = 0f;
             }
