@@ -68,14 +68,15 @@ namespace HelloWorld {
 
         private void MovePlayer() {
             groundedPlayer = controller.isGrounded;
-            if (groundedPlayer && playerVelocity.y < 0) {
-                playerVelocity.y = 0f;
-            }
 
             controller.Move(moveVec * Time.deltaTime * playerSpeed);
 
-            if (moveVec != Vector3.zero) {
-                gameObject.transform.position = moveVec;
+            // if (moveVec != Vector3.zero) {
+                // gameObject.transform.position = moveVec;
+            // }
+            
+            if (groundedPlayer && playerVelocity.y < 0) {
+                playerVelocity.y = 0f;
             }
 
             // Changes the height position of the player..
