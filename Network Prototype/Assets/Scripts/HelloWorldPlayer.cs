@@ -70,7 +70,7 @@ namespace HelloWorld {
             groundedPlayer = controller.isGrounded;
 
             if (moveVec != Vector3.zero) {
-                var moveDirection = transform.TransformDirection(Vector3.forward) * playerSpeed;
+                var moveDirection = transform.rotation * moveVec;
                 controller.Move(moveDirection * Time.deltaTime * playerSpeed);
             }
 
