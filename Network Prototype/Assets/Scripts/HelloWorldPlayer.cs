@@ -64,8 +64,8 @@ namespace HelloWorld {
         }
 
         private void Look() {
-            rotY += mouse.x * mouseSensitivity * Time.deltaTime;
-            rotX += mouse.y * mouseSensitivity * Time.deltaTime;
+            rotY -= mouse.x * mouseSensitivity * Time.deltaTime;
+            rotX -= mouse.y * mouseSensitivity * Time.deltaTime;
 
             rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
 

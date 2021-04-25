@@ -25,6 +25,7 @@ public class PickUpController : MonoBehaviour
     public InputActionAsset playerActions;
     private Vector3 distToPlayer;
     private Vector3 distToDrop;
+    public GameObject AudioManager;
 
     // Start is called before the first frame update
 
@@ -117,6 +118,7 @@ public class PickUpController : MonoBehaviour
         {
             inHand = true;
             slotFull = true; //when item is picked up u cant pick up another item
+            AudioManager.GetComponent<AudioManager>().PickSomethingUpSound();
 
             // make item child of camera and move it to hand
             transform.SetParent(itemContainer);
