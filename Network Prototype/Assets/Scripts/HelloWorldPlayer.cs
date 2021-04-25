@@ -57,10 +57,10 @@ namespace HelloWorld {
         }
 
         void Update() {
-            if (IsLocalPlayer) {
+            //if (IsLocalPlayer) {
                 Look();
                 MovePlayer();
-            }
+            //}
         }
 
         private void Look() {
