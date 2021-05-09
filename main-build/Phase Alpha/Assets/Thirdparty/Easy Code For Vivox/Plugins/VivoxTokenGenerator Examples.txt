@@ -1,0 +1,51 @@
+Token Examples From Vivox General Unity Documentation 
+Please refer to The Vivox Documenation for more understanding
+These examples are for people who have already read the Vivox Documenation
+
+Written in C#
+Requires VivoxTokenGenerator.dll to use method Token_f();
+
+- Token_F parameters in order
+
+1. Your token key from Vivox Developer Portal
+2. Your Token Issuer ID from the Vivox Developer Portal
+3. Time in Unix Epoch + 90 seconds(average timeout) (used for timeout/expiration of token) 
+
+Jerky logs into Vivox
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "login", 0001, null, "sip:.blindmelon-AppName-dev.jerky.@tla.vivox.com", null)
+
+Jerky joins testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "join", 0002, null, "sip:.blindmelon-AppName-dev.jerky.@tla.vivox.com", sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Beef Kicks Jerky from testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "kick", 0003, sip:.blindmelon-AppName-dev.jerky.@tla.vivox.com, "sip:.blindmelon-AppName-dev.beef.@tla.vivox.com", sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Admin kicks Jerky from testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "kick", 0004, sip:.blindmelon-AppName-dev.jerky.@tla.vivox.com, "sip:blindmelon-AppName-dev-Admin@tla.vivox.com", sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Admin kicks all users from a channel at the same time
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "kick", 0005, null, "sip:blindmelon-AppName-dev-Admin@tla.vivox.com", "sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Beef mutes Jerky in testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "mute", 0006, sub":"sip:.blindmelon-AppName-dev.jerky.@tla.vivox.com, "sip:.blindmelon-AppName-dev.beef.@tla.vivox.com", sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Admin mutes Jerky in testcahnnel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "mute", 0007, sub":"sip:.blindmelon-AppName-dev.jerky.@tla.vivox.com, "sip:blindmelon-AppName-dev-Admin@tla.vivox.com", sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Beef mutes everyone in testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "mute", 0008, null, "sip:.blindmelon-AppName-dev.beef.@tla.vivox.com", "sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+Admin mutes everyone in testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "mute", 0009, null, "sip:blindmelon-AppName-dev-Admin@tla.vivox.com", "sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+
+Unmuting is the same as unmuting
+
+
+Speech-To-Text for Vivox Paid Transcribing Service
+All recieved messages will be transcribed for user Beef in testchannel
+VivoxToken.Token_F("yourTokenKey", "blindmelon-AppName-dev", (int)epochTime, "trxn", 0010, null, "sip:.blindmelon-AppName-dev.beef.@tla.vivox.com", "sip:confctl-g-blindmelon-AppName-dev.testchannel@tla.vivox.com")
+
+
+
+
