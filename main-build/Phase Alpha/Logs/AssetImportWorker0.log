@@ -1,0 +1,231 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.4f1 (0abb6314276a) revision 703331'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19042.928; Version 2009; 64bit' Language: 'de' Physical Memory: 16303 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.4f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/GAME DESIGN/HSFL_Projekt/main-build/Phase Alpha
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50455
+Successfully changed project path to: D:/GAME DESIGN/HSFL_Projekt/main-build/Phase Alpha
+D:/GAME DESIGN/HSFL_Projekt/main-build/Phase Alpha
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 118.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.4f1 (0abb6314276a)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GAME DESIGN/HSFL_Projekt/main-build/Phase Alpha/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c8c)
+    Vendor:   
+    VRAM:     4021 MB
+    Driver:   27.21.14.6109
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56104
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002643 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 107.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.706 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002060 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 113.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.084 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3494 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.9 MB.
+System memory in use after: 166.1 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3919.
+Total: 7.235500 ms (FindLiveObjects: 0.522100 ms CreateObjectMapping: 0.299300 ms MarkObjects: 2.640600 ms  DeleteObjects: 3.771000 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/HDRPDefaultResources
+  artifactKey: Guid(abc661c586a9116428571bb17ea1a331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRPDefaultResources using Guid(abc661c586a9116428571bb17ea1a331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f639dcb1963602387f561ca333ed7d2') in 0.109576 seconds
+  Import took 0.136907 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000394 seconds.
+  path: Assets/HDRPDefaultResources/DefaultVFXResources.asset
+  artifactKey: Guid(145290c901d58b343bdeb3b4362c9ff2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRPDefaultResources/DefaultVFXResources.asset using Guid(145290c901d58b343bdeb3b4362c9ff2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67226d95f558187958c4227a43acc64c') in 0.095281 seconds
+  Import took 0.108157 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000747 seconds.
+  path: Assets/HDRPDefaultResources/DefaultHDRISky.exr
+  artifactKey: Guid(54a3a0570aebe8949bec4966f1376581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRPDefaultResources/DefaultHDRISky.exr using Guid(54a3a0570aebe8949bec4966f1376581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e0c659297b98921529318725d925906') in 0.135715 seconds
+  Import took 0.146116 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000417 seconds.
+  path: Assets/HDRPDefaultResources/DefaultHDRPAsset.asset
+  artifactKey: Guid(e93c35b24eb03c74284e7dc0b755bfcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRPDefaultResources/DefaultHDRPAsset.asset using Guid(e93c35b24eb03c74284e7dc0b755bfcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5257e48e60d2b1a2859b45bb5d4a5e9') in 0.032005 seconds
+  Import took 0.040274 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/HDRPDefaultResources/DefaultSceneRoot.prefab
+  artifactKey: Guid(2bfa7b9d63fa79e4abdc033f54a868d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRPDefaultResources/DefaultSceneRoot.prefab using Guid(2bfa7b9d63fa79e4abdc033f54a868d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49c8fe7db208328dfc2095abe0d88d6d') in 0.075780 seconds
+  Import took 0.083676 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000329 seconds.
+  path: Assets/HDRPDefaultResources/DefaultHDRPAsset.asset
+  artifactKey: Guid(e93c35b24eb03c74284e7dc0b755bfcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRPDefaultResources/DefaultHDRPAsset.asset using Guid(e93c35b24eb03c74284e7dc0b755bfcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5257e48e60d2b1a2859b45bb5d4a5e9') in 0.029798 seconds
+  Import took 0.041932 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/SampleSceneAssets/TutorialInfo/Readme.asset
+  artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SampleSceneAssets/TutorialInfo/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53749a4a019b3e49238c4a2b87182ddc') in 0.035499 seconds
+  Import took 0.044714 seconds .
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 2.39 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 37 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.4 MB.
+System memory in use after: 95.6 MB.
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 3953.
+Total: 11.984900 ms (FindLiveObjects: 0.697600 ms CreateObjectMapping: 0.562900 ms MarkObjects: 3.769000 ms  DeleteObjects: 6.952700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.200019 seconds.
+  path: Assets/SampleSceneAssets
+  artifactKey: Guid(0608b30f8530dad4092512580c6c9daa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SampleSceneAssets using Guid(0608b30f8530dad4092512580c6c9daa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21bc204cb660cb74087eefc3f93a2c6b') in 0.032777 seconds
+  Import took 0.135909 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001413 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.406 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3244 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 161.9 MB.
+System memory in use after: 158.1 MB.
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 3952.
+Total: 10.016200 ms (FindLiveObjects: 0.740700 ms CreateObjectMapping: 0.388500 ms MarkObjects: 3.287000 ms  DeleteObjects: 5.598100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.425859 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(43f7fa699ec1fc6418006a373362bf32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(43f7fa699ec1fc6418006a373362bf32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b23ae619ee28379b174b3634b205e7ef') in 0.034755 seconds
+  Import took 0.042748 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 48.295544 seconds.
+  path: Assets/HDRP/DefaultHDRISky.exr
+  artifactKey: Guid(54a3a0570aebe8949bec4966f1376581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRP/DefaultHDRISky.exr using Guid(54a3a0570aebe8949bec4966f1376581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dee57bdf3d51e7b024dfab815785ef1') in 0.081620 seconds
+  Import took 0.089559 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/HDRP/HDRPDefaultSettings.asset
+  artifactKey: Guid(582adbd84082fdb4faf7cd4beb1ccd14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRP/HDRPDefaultSettings.asset using Guid(582adbd84082fdb4faf7cd4beb1ccd14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fee86abf6853252c0154d8806c84bf7') in 0.041656 seconds
+  Import took 0.050560 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000320 seconds.
+  path: Assets/HDRP/DefaultHDRISky.exr
+  artifactKey: Guid(54a3a0570aebe8949bec4966f1376581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRP/DefaultHDRISky.exr using Guid(54a3a0570aebe8949bec4966f1376581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dee57bdf3d51e7b024dfab815785ef1') in 0.051811 seconds
+  Import took 0.059722 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/HDRP/HDRP Low Quality.asset
+  artifactKey: Guid(2c1960d6ad027414599603aecfd05a8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRP/HDRP Low Quality.asset using Guid(2c1960d6ad027414599603aecfd05a8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd05e150cfdd481cbeb07bfa549434da') in 0.038933 seconds
+  Import took 0.068746 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/HDRP/HDRP High Quality.asset
+  artifactKey: Guid(7714a9bf83512dc41abcc07c5f3788f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRP/HDRP High Quality.asset using Guid(7714a9bf83512dc41abcc07c5f3788f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d92fdba908030f1c5b74b2e8f33d5c1') in 0.027757 seconds
+  Import took 0.033184 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/HDRP/HDRP Medium Quality.asset
+  artifactKey: Guid(458d3cb1f4baf54459319193d3ec3311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/HDRP/HDRP Medium Quality.asset using Guid(458d3cb1f4baf54459319193d3ec3311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '870ab66d02299617e14550d9a1c8ca27') in 0.053950 seconds
+  Import took 0.059700 seconds .
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 3.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 41 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 98.7 MB.
+System memory in use after: 94.9 MB.
+
+Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 3952.
+Total: 8.394400 ms (FindLiveObjects: 0.611100 ms CreateObjectMapping: 0.331800 ms MarkObjects: 3.415200 ms  DeleteObjects: 4.028100 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
