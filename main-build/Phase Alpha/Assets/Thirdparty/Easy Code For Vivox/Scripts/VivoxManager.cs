@@ -125,7 +125,11 @@ public class VivoxManager : VivoxBehaviour
 
     private IEnumerator CheckIsTyping()
     {
-        yield return new WaitUntil(() => Input.anyKeyDown);
+        //Bugfix for new input system
+        IsTyping = false;
+        yield return new WaitUntil(() => IsTyping);
+        
+        //yield return new WaitUntil(() => Input.anyKeyDown);
         TypingCountdown += .25f;
         if (IsTyping)
         {

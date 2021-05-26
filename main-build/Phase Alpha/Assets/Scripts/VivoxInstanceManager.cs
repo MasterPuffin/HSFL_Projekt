@@ -22,12 +22,13 @@ public class VivoxInstanceManager : VivoxManager {
     // [SerializeField] Slider remoteUserAudio;
 
     private bool isLocalSelfMuted = false;
+    public bool showDebugMessages = false;
 
     public string userName = "";
     public string channelName = "";
 
     public void StartVivox(string user, string channel) {
-        Debug.Log("Started Vivox, Channel " + channel);
+        if (showDebugMessages) Debug.Log("Started Vivox, Channel " + channel);
         userName = user;
         channelName = channel;
         VivoxLoginUser(userName);
@@ -41,7 +42,7 @@ public class VivoxInstanceManager : VivoxManager {
 
     public override void OnLoggedIn(ILoginSession loginSession) {
         base.OnLoggedIn(loginSession);
-        Debug.Log($"\nLogged In as {loginSession.LoginSessionId.DisplayName}");
+        if (showDebugMessages) Debug.Log($"\nLogged In as {loginSession.LoginSessionId.DisplayName}");
         VivoxJoinChannel(channelName, true, true, true);
     }
 
@@ -85,49 +86,49 @@ public class VivoxInstanceManager : VivoxManager {
 
     public override void OnLoggedOut(ILoginSession loginSession) {
         base.OnLoggedOut(loginSession);
-        this.DebugLog($"\nLogged out {loginSession.LoginSessionId.DisplayName}");
+        if (showDebugMessages) this.DebugLog($"\nLogged out {loginSession.LoginSessionId.DisplayName}");
     }
 
     public override void OnChannelConnected(IChannelSession channelSession) {
         base.OnChannelConnected(channelSession);
-        this.DebugLog($"\nChannel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
+        if (showDebugMessages) this.DebugLog($"\nChannel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
     }
 
     public override void OnChannelDisconnected(IChannelSession channelSession) {
         base.OnChannelDisconnected(channelSession);
-        this.DebugLog($"\nChannel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
+        if (showDebugMessages) this.DebugLog($"\nChannel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
     }
 
     public override void OnVoiceConnected(IChannelSession channelSession) {
         base.OnVoiceConnected(channelSession);
-        this.DebugLog($"\nVoice Channel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
+        if (showDebugMessages) this.DebugLog($"\nVoice Channel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
     }
 
     public override void OnVoiceDisconnected(IChannelSession channelSession) {
         base.OnVoiceDisconnected(channelSession);
-        this.DebugLog(
+        if (showDebugMessages) this.DebugLog(
             $"\nVoice Channel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
     }
 
     public override void OnParticipantAdded(IParticipant participant) {
         base.OnParticipantAdded(participant);
-        this.DebugLog(
+        if (showDebugMessages) this.DebugLog(
             $"\n{participant.Account.DisplayName} has joined {participant.ParentChannelSession.Channel.Name}");
     }
 
     public override void OnParticipantRemoved(IParticipant participant) {
         base.OnParticipantRemoved(participant);
-        this.DebugLog($"\n{participant.Account.DisplayName} has left {participant.ParentChannelSession.Channel.Name}");
+        if (showDebugMessages) this.DebugLog($"\n{participant.Account.DisplayName} has left {participant.ParentChannelSession.Channel.Name}");
     }
 
     public override void OnUserMuted(IParticipant participant) {
         base.OnUserMuted(participant);
-        this.DebugLog($"\n{participant.Account.DisplayName} has been muted");
+        if (showDebugMessages) this.DebugLog($"\n{participant.Account.DisplayName} has been muted");
     }
 
     public override void OnUserUnmuted(IParticipant participant) {
         base.OnUserUnmuted(participant);
-        this.DebugLog($"\n{participant.Account.DisplayName} has been unmuted");
+        if (showDebugMessages) this.DebugLog($"\n{participant.Account.DisplayName} has been unmuted");
     }
 
     public override void OnUserSpeaking(IParticipant participant) {
