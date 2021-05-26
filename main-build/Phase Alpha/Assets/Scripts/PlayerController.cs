@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using MLAPI;
 using MLAPI.Messaging;
 using MLAPI.NetworkVariable;
@@ -20,6 +21,7 @@ public class PlayerController : NetworkBehaviour {
 
     public float playerSpeed = 2.0f;
     public float jumpHeight = 1.0f;
+    public float maxPickupDistance = 10.0f;
 
     private float gravityValue = -9.81f;
     private bool jumping = false;
@@ -69,6 +71,28 @@ public class PlayerController : NetworkBehaviour {
 
     public void OnJump() {
         jumping = true;
+    }
+
+    public void OnPickUp() {
+        if (!IsLocalPlayer) return;
+
+        RaycastHit hit;
+        //Only detects a hit when the item is on the "Pickupable Items" layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
+            maxPickupDistance, LayerMask.GetMask("Pickupable Items"))) {
+            PickupableItem pi = hit.transform.GetComponent<PickupableItem>();
+            //Execute onPickup logic if defined
+            if (pi.onPickup != null) {
+                Debug.Log("Executing " + pi.onPickup.GetClass());
+
+                //TODO: Is this possible without creating a new gameObject?
+                GameObject tempGameObject = new GameObject();
+                tempGameObject.AddComponent(pi.onPickup.GetClass());
+                Destroy(tempGameObject);
+            }
+            //Delete Object on pickup
+            Destroy(pi);
+        }
     }
 
     public void OnCamera(InputValue input) {
