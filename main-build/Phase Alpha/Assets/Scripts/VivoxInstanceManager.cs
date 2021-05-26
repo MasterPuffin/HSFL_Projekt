@@ -38,6 +38,10 @@ public class VivoxInstanceManager : VivoxManager {
         VivoxLogoutSession();
     }
 
+    void OnApplicationQuit() {
+        EndVivox();
+    }
+
     #region Custom Methods
 
     public override void OnLoggedIn(ILoginSession loginSession) {
@@ -45,7 +49,6 @@ public class VivoxInstanceManager : VivoxManager {
         if (showDebugMessages) Debug.Log($"\nLogged In as {loginSession.LoginSessionId.DisplayName}");
         VivoxJoinChannel(channelName, true, true, true);
     }
-
 
     #endregion
 
@@ -91,34 +94,42 @@ public class VivoxInstanceManager : VivoxManager {
 
     public override void OnChannelConnected(IChannelSession channelSession) {
         base.OnChannelConnected(channelSession);
-        if (showDebugMessages) this.DebugLog($"\nChannel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
+        if (showDebugMessages)
+            this.DebugLog($"\nChannel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
     }
 
     public override void OnChannelDisconnected(IChannelSession channelSession) {
         base.OnChannelDisconnected(channelSession);
-        if (showDebugMessages) this.DebugLog($"\nChannel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
+        if (showDebugMessages)
+            this.DebugLog($"\nChannel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
     }
 
     public override void OnVoiceConnected(IChannelSession channelSession) {
         base.OnVoiceConnected(channelSession);
-        if (showDebugMessages) this.DebugLog($"\nVoice Channel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
+        if (showDebugMessages)
+            this.DebugLog(
+                $"\nVoice Channel {channelSession.Channel.Name} has connected : {channelSession.Channel.Type}");
     }
 
     public override void OnVoiceDisconnected(IChannelSession channelSession) {
         base.OnVoiceDisconnected(channelSession);
-        if (showDebugMessages) this.DebugLog(
-            $"\nVoice Channel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
+        if (showDebugMessages)
+            this.DebugLog(
+                $"\nVoice Channel {channelSession.Channel.Name} has disconnected : {channelSession.Channel.Type}");
     }
 
     public override void OnParticipantAdded(IParticipant participant) {
         base.OnParticipantAdded(participant);
-        if (showDebugMessages) this.DebugLog(
-            $"\n{participant.Account.DisplayName} has joined {participant.ParentChannelSession.Channel.Name}");
+        if (showDebugMessages)
+            this.DebugLog(
+                $"\n{participant.Account.DisplayName} has joined {participant.ParentChannelSession.Channel.Name}");
     }
 
     public override void OnParticipantRemoved(IParticipant participant) {
         base.OnParticipantRemoved(participant);
-        if (showDebugMessages) this.DebugLog($"\n{participant.Account.DisplayName} has left {participant.ParentChannelSession.Channel.Name}");
+        if (showDebugMessages)
+            this.DebugLog(
+                $"\n{participant.Account.DisplayName} has left {participant.ParentChannelSession.Channel.Name}");
     }
 
     public override void OnUserMuted(IParticipant participant) {
