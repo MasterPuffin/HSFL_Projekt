@@ -36,10 +36,12 @@ public class PlayerController : NetworkBehaviour {
 
     private VivoxInstanceManager vivox;
     private NetworkedGameManager ngm;
+    private PlayerInventory inventory;
 
     void Start() {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
+            inventory = GetComponent<PlayerInventory>();
 
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = rot.y;
@@ -89,6 +91,8 @@ public class PlayerController : NetworkBehaviour {
                 GameObject tempGameObject = new GameObject();
                 tempGameObject.AddComponent(pi.onPickup.GetClass());
                 Destroy(tempGameObject);
+                
+                inventory.Add(pi);
             }
             //Delete Object on pickup
             Destroy(pi);
