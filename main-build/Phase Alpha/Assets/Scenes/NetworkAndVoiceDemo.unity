@@ -197,6 +197,7 @@ Transform:
   - {fileID: 1548977140}
   - {fileID: 1354213619}
   - {fileID: 874890788}
+  - {fileID: 2043695857}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -449,6 +450,7 @@ MonoBehaviour:
   vivoxDomain: mt1s.vivox.com
   vivoxTokenIssuer: johann2071-hs30-dev
   vivoxTokenKey: lock149
+  showDebugMessages: 0
   userName: 
   channelName: 
 --- !u!4 &778484174
@@ -1151,8 +1153,8 @@ GameObject:
   - component: {fileID: 2043695855}
   - component: {fileID: 2043695854}
   - component: {fileID: 2043695853}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 10
+  m_Name: Pickupable Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,6 +1174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Test
   id: item/test
+  onPickup: {fileID: 11500000, guid: 2142f9a301dfcb343a032c8973821b06, type: 3}
+  onDiscard: {fileID: 0}
 --- !u!65 &2043695854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1241,10 +1245,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043695852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.1, y: 0.34, z: -1.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 320530513}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
