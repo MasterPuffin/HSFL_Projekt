@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,11 +27,14 @@ public class PickUpController : MonoBehaviour
     private Vector3 distToPlayer;
     private Vector3 distToDrop;
     public GameObject AudioManager;
+    private GameObject tablet;
+    private bool used;
 
     // Start is called before the first frame update
 
     void Awake()
     {
+        tablet = GameObject.Find("demo_tablet");
         actionMap = playerActions.FindActionMap("Player");
         pickUp = actionMap.FindAction("PickUp");
         pickUp.performed += context => PickUp();
@@ -53,7 +57,11 @@ public class PickUpController : MonoBehaviour
     void Update()
     {
         distToPlayer = playerTransform.position - transform.position;
-        distToDrop = cardDropContainer.position - transform.position;
+        if (CompareTag("Card"))
+        {
+            distToDrop = cardDropContainer.position - transform.position;
+        }
+        
     }
 
     /*
@@ -74,7 +82,7 @@ public class PickUpController : MonoBehaviour
 */
         private void UseCard()
     {
-        if (inHand && distToDrop.magnitude <= pickUpRange)
+        if (inHand && distToDrop.magnitude <= pickUpRange && CompareTag("Card"))
         {
             inHand = false;
             slotFull = false; //when item is used you can pick up another item
@@ -85,7 +93,6 @@ public class PickUpController : MonoBehaviour
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.Euler(Vector3.zero);
             transform.localScale = Vector3.one;
-
             rb.isKinematic = true;
             collid.isTrigger = true;
         }
@@ -114,20 +121,32 @@ public class PickUpController : MonoBehaviour
 
     private void PickUp()
     {
-        if (!inHand && !slotFull && distToPlayer.magnitude <= pickUpRange)
+        if (!inHand && !slotFull && distToPlayer.magnitude <= pickUpRange && !used)
         {
             inHand = true;
             slotFull = true; //when item is picked up u cant pick up another item
             AudioManager.GetComponent<AudioManager>().PickSomethingUpSound();
 
-            // make item child of camera and move it to hand
-            transform.SetParent(itemContainer);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.Euler(Vector3.zero);
-            transform.localScale = Vector3.one;
+            if (CompareTag("Tablet"))
+            {
+                if (tablet.GetComponent<UnlockTablet>().isPickable)
+                {
+                    // enable Story Panel
+                    //tablet.GetComponent<UnlockTablet>().ShowText();
+                }
+            }
 
-            rb.isKinematic = true;
-            collid.isTrigger = true;
+            if (CompareTag("Card"))
+            {
+                // make item child of camera and move it to hand
+                transform.SetParent(itemContainer);
+                transform.localPosition = Vector3.zero;
+                transform.localRotation = Quaternion.Euler(Vector3.zero);
+                transform.localScale = Vector3.one;
+
+                rb.isKinematic = true;
+                collid.isTrigger = true;
+            }
         }
     }
 }

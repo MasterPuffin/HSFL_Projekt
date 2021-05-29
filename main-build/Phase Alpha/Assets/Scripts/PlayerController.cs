@@ -39,24 +39,29 @@ public class PlayerController : NetworkBehaviour {
     private PlayerInventory inventory;
 
     void Start() {
-        if (IsLocalPlayer) {
-            ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
-            inventory = GetComponent<PlayerInventory>();
+        /* if (IsLocalPlayer) {
+             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
+             inventory = GetComponent<PlayerInventory>();
 
-            Vector3 rot = transform.localRotation.eulerAngles;
-            rotY = rot.y;
-            rotX = rot.x;
-            controller = GetComponent<CharacterController>();
+             Vector3 rot = transform.localRotation.eulerAngles;
+             rotY = rot.y;
+             rotX = rot.x;
+             controller = GetComponent<CharacterController>();
 
-            // Cursor.lockState = CursorLockMode.Locked;
+             // Cursor.lockState = CursorLockMode.Locked;
 
-            //Enable camera attached to player
-            transform.Find("PlayerCamera").gameObject.SetActive(true);
+             //Enable camera attached to player
+             transform.Find("PlayerCamera").gameObject.SetActive(true);
 
-            //Connect to Vivox instance
-            vivox = GameObject.Find("Vivox").GetComponent<VivoxInstanceManager>();
-            vivox.StartVivox(IsHost ? "Host" : "Client", ngm.vivoxChannel.Value);
-        }
+             //Connect to Vivox instance
+             vivox = GameObject.Find("Vivox").GetComponent<VivoxInstanceManager>();
+             vivox.StartVivox(IsHost ? "Host" : "Client", ngm.vivoxChannel.Value);
+         }
+        */
+        Vector3 rot = transform.localRotation.eulerAngles;
+        rotY = rot.y;
+        rotX = rot.x;
+        controller = GetComponent<CharacterController>();
     }
 
     private void OnDestroy() {
@@ -104,15 +109,15 @@ public class PlayerController : NetworkBehaviour {
     }
 
     void Update() {
-        if (IsLocalPlayer) {
+        //if (IsLocalPlayer) {
             Look();
             MovePlayer();
-        }
+        //}
     }
 
     private void Look() {
-        rotY += mouse.x * mouseSensitivity * Time.deltaTime;
-        rotX += mouse.y * mouseSensitivity * Time.deltaTime;
+        rotY -= mouse.x * mouseSensitivity * Time.deltaTime;
+        rotX -= mouse.y * mouseSensitivity * Time.deltaTime;
 
         rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
 
