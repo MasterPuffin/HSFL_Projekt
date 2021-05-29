@@ -50,7 +50,8 @@ namespace VivoxUnity
         /// <param name="debugMsg"></param>
         public static void DebugLog(this object className, string debugMsg)
         {
-            UnityEngine.Debug.Log($"<b><color={RichTextColors.lightblue.ToString()}>{className.GetType().FullName}</color></b> : {debugMsg}");
+            //DEBUG
+            //UnityEngine.Debug.Log($"<b><color={RichTextColors.lightblue.ToString()}>{className.GetType().FullName}</color></b> : {debugMsg}");
         }
 
         // Modified from this code by bafsar
