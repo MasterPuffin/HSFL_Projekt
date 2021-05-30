@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1934.9883, g: 622.06445, b: 346.9131, a: 1}
+  m_IndirectSpecularColor: {r: 1874.4883, g: 630.01855, b: 339.7644, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1955,6 +1955,7 @@ MonoBehaviour:
   isPickable: 0
   player: {fileID: 1330396785}
   AudioManager: {fileID: 1034874453}
+  gesperrtText: {fileID: 1422545613}
 --- !u!54 &702822394
 Rigidbody:
   m_ObjectHideFlags: 0

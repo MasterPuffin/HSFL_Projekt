@@ -11,7 +11,7 @@ public class UnlockTablet : MonoBehaviour
     public GameObject player;
     private PlayerController pc;
     public GameObject AudioManager;
-
+    public GameObject gesperrtText;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +25,11 @@ public class UnlockTablet : MonoBehaviour
         {
             //highlight Tablet and make Tablet pickable
             isPickable = true;
-            GameObject.Find("TabletText").SetActive(false);
-            
+            if (gesperrtText.activeSelf)
+            {
+                gesperrtText.SetActive(false);
+            }
+
         }
     }
 
