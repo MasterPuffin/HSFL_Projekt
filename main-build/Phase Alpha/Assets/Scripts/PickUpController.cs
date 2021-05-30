@@ -28,7 +28,7 @@ public class PickUpController : MonoBehaviour
     private Vector3 distToDrop;
     public GameObject AudioManager;
     private GameObject tablet;
-    private bool used;
+    public bool isPickable;
 
     // Start is called before the first frame update
 
@@ -45,6 +45,8 @@ public class PickUpController : MonoBehaviour
     }
     void Start()
     {
+
+
         playerTransform = player.GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         collid = GetComponent<BoxCollider>();
@@ -61,7 +63,16 @@ public class PickUpController : MonoBehaviour
         {
             distToDrop = cardDropContainer.position - transform.position;
         }
-        
+
+        //wenn der spieler das erste mal in die nähe des Tablets kommt wird die Quest 1 abgeschlossen
+        if (CompareTag("Tablet") && distToPlayer.magnitude <= pickUpRange*2)
+        {
+            QuestController qc = GameObject.Find("Canvas").GetComponent<QuestController>();
+            if (qc.text.text == qc.questText1)
+            {
+                qc.QuestAbgeschlossen();
+            }
+        }
     }
 
     /*
@@ -95,6 +106,7 @@ public class PickUpController : MonoBehaviour
             transform.localScale = Vector3.one;
             rb.isKinematic = true;
             collid.isTrigger = true;
+            isPickable = false;
         }
     }
 
@@ -121,23 +133,31 @@ public class PickUpController : MonoBehaviour
 
     private void PickUp()
     {
-        if (!inHand && !slotFull && distToPlayer.magnitude <= pickUpRange && !used)
+        if (!inHand && !slotFull && distToPlayer.magnitude <= pickUpRange )
         {
-            inHand = true;
-            slotFull = true; //when item is picked up u cant pick up another item
-            AudioManager.GetComponent<AudioManager>().PickSomethingUpSound();
+            Debug.Log("try to pick up"+gameObject.name);
+            
 
             if (CompareTag("Tablet"))
             {
+                Debug.Log("tablet picked");
                 if (tablet.GetComponent<UnlockTablet>().isPickable)
                 {
+                    //AudioManager.GetComponent<AudioManager>().PickSomethingUpSound();
                     // enable Story Panel
-                    //tablet.GetComponent<UnlockTablet>().ShowText();
+                    Debug.Log("Show story");
+                    tablet.GetComponent<UnlockTablet>().ShowText();
+                    GameObject.Find("Canvas").GetComponent<QuestController>().QuestAbgeschlossen();
+
                 }
             }
 
-            if (CompareTag("Card"))
+            if (CompareTag("Card") && isPickable)
             {
+                inHand = true;
+                slotFull = true; //when item is picked up u cant pick up another item
+                AudioManager.GetComponent<AudioManager>().PickSomethingUpSound();
+
                 // make item child of camera and move it to hand
                 transform.SetParent(itemContainer);
                 transform.localPosition = Vector3.zero;

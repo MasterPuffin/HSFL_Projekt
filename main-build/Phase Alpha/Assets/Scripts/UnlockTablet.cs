@@ -8,11 +8,13 @@ public class UnlockTablet : MonoBehaviour
     public GameObject cardslot2;
     public GameObject tabletText;
     public bool isPickable = false;
+    public GameObject player;
+    private PlayerController pc;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        pc = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -22,15 +24,18 @@ public class UnlockTablet : MonoBehaviour
         {
             //highlight Tablet and make Tablet pickable
             isPickable = true;
+            GameObject.Find("TabletText").SetActive(false);
         }
     }
 
     public void ShowText()
     {
         tabletText.SetActive(true);
+       // block movement of player
     }
     public void HideText()
     {
         tabletText.SetActive(false);
+        // unblock movement of player
     }
 }

@@ -38,6 +38,7 @@ public class PlayerController : NetworkBehaviour {
     private NetworkedGameManager ngm;
     private PlayerInventory inventory;
 
+
     void Start() {
         /* if (IsLocalPlayer) {
              ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
@@ -108,11 +109,13 @@ public class PlayerController : NetworkBehaviour {
         mouse = input.Get<Vector2>();
     }
 
-    void Update() {
+    void Update()
+    {
         //if (IsLocalPlayer) {
-            Look();
-            MovePlayer();
+        Look();
+        MovePlayer();
         //}
+    
     }
 
     private void Look() {
