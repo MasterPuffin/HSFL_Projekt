@@ -10,6 +10,7 @@ public class UnlockTablet : MonoBehaviour
     public bool isPickable = false;
     public GameObject player;
     private PlayerController pc;
+    public GameObject AudioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,15 @@ public class UnlockTablet : MonoBehaviour
             //highlight Tablet and make Tablet pickable
             isPickable = true;
             GameObject.Find("TabletText").SetActive(false);
+            
         }
     }
 
     public void ShowText()
     {
         tabletText.SetActive(true);
-       // block movement of player
+        AudioManager.GetComponent<AudioManager>().DeviceStartUp();
+        // block movement of player
     }
     public void HideText()
     {
