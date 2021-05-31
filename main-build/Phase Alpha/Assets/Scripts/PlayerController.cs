@@ -19,14 +19,14 @@ public class PlayerController : NetworkBehaviour {
 
     private bool groundedPlayer;
 
-    public float playerSpeed = 2.0f;
+    public float playerSpeed = 4.0f;
     public float jumpHeight = 1.0f;
     public float maxPickupDistance = 10.0f;
 
     private float gravityValue = -9.81f;
     private bool jumping = false;
 
-    public float mouseSensitivity = 50.0f;
+    public float mouseSensitivity = 30.0f;
     public float clampAngle = 80.0f;
 
     private float rotY = 0.0f; // rotation around the up/y axis
@@ -44,10 +44,11 @@ public class PlayerController : NetworkBehaviour {
             inventory = GetComponent<PlayerInventory>();
 
             Vector3 rot = transform.localRotation.eulerAngles;
-            rotY = rot.y;
-            rotX = rot.x;
+            rotY = -rot.y;
+            rotX = -rot.x;
             controller = GetComponent<CharacterController>();
 
+            //DEBUG
             // Cursor.lockState = CursorLockMode.Locked;
 
             //Enable camera attached to player
