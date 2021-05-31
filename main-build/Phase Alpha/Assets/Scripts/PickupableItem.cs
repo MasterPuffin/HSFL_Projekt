@@ -6,6 +6,6 @@ public class PickupableItem : MonoBehaviour {
     public string id;
     public MonoScript onPickup;
     
-    //Currently not exeucted
+    //Currently not executed
     public MonoScript onDiscard;
 }

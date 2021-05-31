@@ -124,7 +124,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AO: 1
+    - _AO: 0.496
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -151,12 +151,12 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
-    - _DecalBlend: 0.804
+    - _DecalBlend: 1
     - _DecalColorMask0: 0
     - _DecalColorMask1: 15
     - _DecalColorMask2: 4
     - _DecalColorMask3: 4
-    - _DecalMaskMapBlueScale: 0.935
+    - _DecalMaskMapBlueScale: 1
     - _DecalMeshBiasType: 1
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
@@ -177,7 +177,7 @@ Material:
     - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
-    - _EmissiveIntensity: 1
+    - _EmissiveIntensity: 2.7
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
@@ -248,7 +248,7 @@ Material:
     - _UVDetail: 0
     - _UVEmissive: 0
     - _Unity_Identify_HDRP_Decal: 1
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
@@ -261,7 +261,7 @@ Material:
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 2.7}
     - _EmissiveColorHDR: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}

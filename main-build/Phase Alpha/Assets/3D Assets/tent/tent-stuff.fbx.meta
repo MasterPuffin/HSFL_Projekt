@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:main-build/Phase Alpha/Assets/3D Assets/tent/tent-stuff.fbx.meta
 guid: d832213b940e1b741bf152e6d42803b8
 ModelImporter:
   serializedVersion: 20200
@@ -14,6 +15,25 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material.012
     second: {fileID: 2100000, guid: e93e7e1a072b4fa4bb5f6bf000fce8a7, type: 2}
+=======
+guid: 5177985564fc73a4c9508f85bf4a8006
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 3563083173613518678
+    second: open gate
+  - first:
+      74: 1665347572101469211
+    second: gate_main_ID|ruins_button_main_lowAction
+  - first:
+      74: -8157795351933035273
+    second: gate_main_ID|ruins_pressurePlate_lowAction
+  - first:
+      74: -7107352311947961821
+    second: close gate
+  externalObjects: {}
+>>>>>>> main-build:main-build/Phase Alpha/Assets/3D Assets/Ruins/Interactive/gate.fbx.meta
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,26 +53,84 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: open gate
+      takeName: gate_main_ID|gate_main_IDAction
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 175
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: close gate
+      takeName: gate_main_ID|gate_main_IDAction
+      internalID: 0
+      firstFrame: 180
+      lastFrame: 322
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 1
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -98,7 +176,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
