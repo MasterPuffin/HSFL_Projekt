@@ -240,7 +240,7 @@ MonoBehaviour:
     decalLayerName6: Decal Layer 6
     decalLayerName7: Decal Layer 7
     msaaSampleCount: 1
-    supportMotionVectors: 1
+    supportMotionVectors: 0
     supportRuntimeDebugDisplay: 0
     supportRuntimeAOVAPI: 0
     supportDitheringCrossFade: 1
@@ -306,9 +306,9 @@ MonoBehaviour:
       maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
     decalSettings:
-      drawDistance: 1000
-      atlasWidth: 2048
-      atlasHeight: 2048
+      drawDistance: 100
+      atlasWidth: 1024
+      atlasHeight: 1024
       perChannelMask: 1
     postProcessSettings:
       m_LutSize: 32
