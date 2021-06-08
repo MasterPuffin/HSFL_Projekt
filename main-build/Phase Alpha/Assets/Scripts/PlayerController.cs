@@ -7,6 +7,7 @@ using MLAPI.Messaging;
 using MLAPI.NetworkVariable;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 /*
  * This script controls the player movement and view / camera 
@@ -57,6 +58,14 @@ public class PlayerController : NetworkBehaviour {
             //Connect to Vivox instance
             vivox = GameObject.Find("Vivox").GetComponent<VivoxInstanceManager>();
             vivox.StartVivox(IsHost ? "Host" : "Client", ngm.vivoxChannel.Value);
+            
+            //Teleports player to spawn position
+            //Offsets the position by a small random amount to prevent players standing in each
+            //other when spawning
+            TeleportPlayer(
+                GameObject.Find("Network/PlayerSpawnPosition").transform.position +
+                new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 2.0f)
+                );
         }
     }
 
@@ -78,7 +87,7 @@ public class PlayerController : NetworkBehaviour {
 
     public void OnPickUp() {
         if (!IsLocalPlayer) return;
-        
+
         RaycastHit hit;
         //Only detects a hit when the item is on the "Pickupable Items" layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
@@ -94,17 +103,13 @@ public class PlayerController : NetworkBehaviour {
                 GameObject tempGameObject = new GameObject();
                 tempGameObject.AddComponent(pi.onPickup.GetClass());
                 Destroy(tempGameObject);
-                Debug.Log(pi); 
+                Debug.Log(pi);
                 inventory.Add(pi);
-                
             }
-            
         }
-
     }
 
-    public void OnUse()
-    {
+    public void OnUse() {
         //Debug.Log("player tries to use");
 
         if (!IsLocalPlayer) return;
@@ -112,21 +117,18 @@ public class PlayerController : NetworkBehaviour {
         RaycastHit hit;
         //Only detects a hit when the item is on the "Usableable Objects" layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
-            maxPickupDistance, LayerMask.GetMask("Useable")))
-        {
+            maxPickupDistance, LayerMask.GetMask("Useable"))) {
             Debug.Log("player used at useable layer");
             UseableItem pi = hit.transform.GetComponent<UseableItem>();
             //Execute onPickup logic if defined
 
-            if (pi.onUse != null)
-            {
+            if (pi.onUse != null) {
                 Debug.Log("Executing " + pi.onUse.GetClass());
 
                 //TODO: Is this possible without creating a new gameObject?
                 GameObject tempGameObject = new GameObject();
                 tempGameObject.AddComponent(pi.onUse.GetClass());
                 Destroy(tempGameObject);
-
             }
         }
     }
@@ -171,5 +173,15 @@ public class PlayerController : NetworkBehaviour {
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    //Teleports a player as the setting of transform.position is only possible if
+    //the Character Controller is disabled
+    private void TeleportPlayer(Vector3 position) {
+        CharacterController cc = GetComponent<CharacterController>();
+
+        cc.enabled = false;
+        transform.position = position;
+        cc.enabled = true;
     }
 }
