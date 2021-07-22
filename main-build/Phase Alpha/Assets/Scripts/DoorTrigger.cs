@@ -20,7 +20,7 @@ public class DoorTrigger : MonoBehaviour
             if (!open)
             {
                 myDoor.Play("open gate", 0, 0.0f);
-                this.GetComponent<Animator>().Play("push down", 0, 0.0f);   
+                //this.GetComponent<Animator>().Play("push down", 0, 0.0f);   
                 open = true;
                 if (soundPlayed == false)
                 {
