@@ -27,6 +27,7 @@ public class PlayerController : NetworkBehaviour {
 
     private float gravityValue = -9.81f;
     public bool jumping = false;
+    public Vector3 jumpMoveVec;
 
     public float mouseSensitivity = 30.0f;
     public float clampAngle = 80.0f;
@@ -79,15 +80,14 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnMove(InputValue input) {
-       // if (groundedPlayer) {
-            Vector2 inputVec = input.Get<Vector2>();
-            moveVec = new Vector3(inputVec.x, 0, inputVec.y);
-        //}
+        Vector2 inputVec = input.Get<Vector2>();
+        moveVec = new Vector3(inputVec.x, 0, inputVec.y);
     }
 
     public void OnJump() {
         if (groundedPlayer) {
             jumping = true;
+            jumpMoveVec = moveVec;
         }
     }
 
@@ -161,13 +161,17 @@ public class PlayerController : NetworkBehaviour {
     }
 
     private void MovePlayer() {
-        if (moveVec != Vector3.zero) {
-            controller.Move(transform.rotation * moveVec * (Time.deltaTime * playerSpeed));
+        if (!groundedPlayer) {
+            controller.Move(transform.rotation * jumpMoveVec * (Time.deltaTime * playerSpeed));
+        } else {
+            if (moveVec != Vector3.zero) {
+                controller.Move(transform.rotation * moveVec * (Time.deltaTime * playerSpeed));
+            }
         }
 
         groundedPlayer = controller.isGrounded;
         if (!groundedPlayer) {
-            //Check again via Raycast
+            //Check again via Raycast as the player Controller is buggy
             groundedPlayer = IsGrounded();
         }
 
@@ -183,10 +187,6 @@ public class PlayerController : NetworkBehaviour {
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-
-        if (groundedPlayer) {
-            //moveVec = Vector3.zero;
-        }
     }
 
     //Teleports a player as the setting of transform.position is only possible if
@@ -203,6 +203,6 @@ public class PlayerController : NetworkBehaviour {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity);
         // Debug.Log(hit.distance-distToGround);
-        return hit.distance - distToGround < 0.3f;
+        return hit.distance - distToGround < 0.35f;
     }
 }
