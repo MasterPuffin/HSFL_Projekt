@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class UnlockTablet : MonoBehaviour
 {
+    public Animator myDoor = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,9 @@ public class UnlockTablet : MonoBehaviour
         {
             // make tablet pickable
             gameObject.layer = 10;
+
+            // open doors to ruins, normally in Onpickup script
+            myDoor.Play("open gate", 0, 0.0f);
         }
     }
 
