@@ -14,11 +14,11 @@ using Random = UnityEngine.Random;
  */
 
 public class PlayerController : NetworkBehaviour {
-    public Vector3 moveVec;
+    private Vector3 moveVec;
     private CharacterController controller;
     private Vector3 playerVelocity;
 
-    public bool groundedPlayer;
+    private bool groundedPlayer;
     private float distToGround;
 
     public float playerSpeed = 4.0f;
@@ -26,8 +26,9 @@ public class PlayerController : NetworkBehaviour {
     public float maxPickupDistance = 10.0f;
 
     private float gravityValue = -9.81f;
-    public bool jumping = false;
-    public Vector3 jumpMoveVec;
+    private bool jumping = false;
+    //Vector to continue the direction while jumping
+    private Vector3 jumpMoveVec;
 
     public float mouseSensitivity = 30.0f;
     public float clampAngle = 80.0f;
@@ -175,7 +176,7 @@ public class PlayerController : NetworkBehaviour {
             groundedPlayer = IsGrounded();
         }
 
-        if (groundedPlayer && playerVelocity.y < 0) {
+        if (groundedPlayer && playerVelocity.y < 0.1f) {
             playerVelocity.y = 0f;
         }
 
