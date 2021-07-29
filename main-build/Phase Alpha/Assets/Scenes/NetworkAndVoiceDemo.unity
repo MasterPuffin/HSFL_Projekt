@@ -1250,7 +1250,7 @@ Transform:
   m_GameObject: {fileID: 1736854036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 320530513}
   m_RootOrder: 0
@@ -1290,7 +1290,6 @@ MonoBehaviour:
   uiName: Test
   id: item/test
   onPickup: {fileID: 11500000, guid: 2142f9a301dfcb343a032c8973821b06, type: 3}
-  onDiscard: {fileID: 0}
 --- !u!65 &2043695854
 BoxCollider:
   m_ObjectHideFlags: 0

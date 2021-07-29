@@ -18,14 +18,15 @@ public class PlayerController : NetworkBehaviour {
     private CharacterController controller;
     private Vector3 playerVelocity;
 
-    private bool groundedPlayer;
+    public bool groundedPlayer;
+    private float distToGround;
 
     public float playerSpeed = 4.0f;
     public float jumpHeight = 1.0f;
     public float maxPickupDistance = 10.0f;
 
     private float gravityValue = -9.81f;
-    private bool jumping = false;
+    public bool jumping = false;
 
     public float mouseSensitivity = 30.0f;
     public float clampAngle = 80.0f;
@@ -54,18 +55,19 @@ public class PlayerController : NetworkBehaviour {
 
             //Enable camera attached to player
             transform.Find("PlayerCamera").gameObject.SetActive(true);
+            distToGround = GetComponent<Collider>().bounds.extents.y;
 
             //Connect to Vivox instance
             vivox = GameObject.Find("Vivox").GetComponent<VivoxInstanceManager>();
             vivox.StartVivox(IsHost ? "Host" : "Client", ngm.vivoxChannel.Value);
-            
+
             //Teleports player to spawn position
             //Offsets the position by a small random amount to prevent players standing in each
             //other when spawning
             TeleportPlayer(
                 GameObject.Find("Network/PlayerSpawnPosition").transform.position +
                 new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 2.0f)
-                );
+            );
         }
     }
 
@@ -77,12 +79,16 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnMove(InputValue input) {
-        Vector2 inputVec = input.Get<Vector2>();
-        moveVec = new Vector3(inputVec.x, 0, inputVec.y);
+       // if (groundedPlayer) {
+            Vector2 inputVec = input.Get<Vector2>();
+            moveVec = new Vector3(inputVec.x, 0, inputVec.y);
+        //}
     }
 
     public void OnJump() {
-        jumping = true;
+        if (groundedPlayer) {
+            jumping = true;
+        }
     }
 
     public void OnPickUp() {
@@ -160,6 +166,10 @@ public class PlayerController : NetworkBehaviour {
         }
 
         groundedPlayer = controller.isGrounded;
+        if (!groundedPlayer) {
+            //Check again via Raycast
+            groundedPlayer = IsGrounded();
+        }
 
         if (groundedPlayer && playerVelocity.y < 0) {
             playerVelocity.y = 0f;
@@ -173,6 +183,10 @@ public class PlayerController : NetworkBehaviour {
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (groundedPlayer) {
+            //moveVec = Vector3.zero;
+        }
     }
 
     //Teleports a player as the setting of transform.position is only possible if
@@ -183,5 +197,12 @@ public class PlayerController : NetworkBehaviour {
         cc.enabled = false;
         transform.position = position;
         cc.enabled = true;
+    }
+
+    private bool IsGrounded() {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity);
+        // Debug.Log(hit.distance-distToGround);
+        return hit.distance - distToGround < 0.3f;
     }
 }
