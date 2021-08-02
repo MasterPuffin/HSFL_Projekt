@@ -5,6 +5,7 @@ public class UseableItem : MonoBehaviour
 {
     public string uiName;
     public string id;
-    public MonoScript onUse;
+    //TODO: Replace
+    //public MonoScript onUse;
 
 }

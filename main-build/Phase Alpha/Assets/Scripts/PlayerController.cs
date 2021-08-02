@@ -26,7 +26,9 @@ public class PlayerController : NetworkBehaviour {
     public float maxPickupDistance = 10.0f;
 
     private float gravityValue = -9.81f;
+
     private bool jumping = false;
+
     //Vector to continue the direction while jumping
     private Vector3 jumpMoveVec;
 
@@ -103,6 +105,7 @@ public class PlayerController : NetworkBehaviour {
             //Delete Object on pickup
             Destroy(hit.collider.gameObject);
             //Execute onPickup logic if defined
+            /*
             if (pi.onPickup != null) {
                 Debug.Log("Executing " + pi.onPickup.GetClass());
 
@@ -113,6 +116,7 @@ public class PlayerController : NetworkBehaviour {
                 Debug.Log(pi);
                 inventory.Add(pi);
             }
+            */
         }
     }
 
@@ -128,7 +132,7 @@ public class PlayerController : NetworkBehaviour {
             Debug.Log("player used at useable layer");
             UseableItem pi = hit.transform.GetComponent<UseableItem>();
             //Execute onPickup logic if defined
-
+/*
             if (pi.onUse != null) {
                 Debug.Log("Executing " + pi.onUse.GetClass());
 
@@ -137,6 +141,7 @@ public class PlayerController : NetworkBehaviour {
                 tempGameObject.AddComponent(pi.onUse.GetClass());
                 Destroy(tempGameObject);
             }
+            */
         }
     }
 
