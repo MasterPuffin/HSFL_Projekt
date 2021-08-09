@@ -245,7 +245,7 @@ Material:
     - _UVDetail: 0
     - _UVEmissive: 0
     - _UVSec: 0
-    - _UseEmissiveIntensity: 1
+    - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
@@ -258,8 +258,8 @@ Material:
     - _DiffusionProfileAsset: {r: -5.395752e+33, g: -5.5110685e+12, b: -1.3277582e-30, a: 2.9123514e+37}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 135.86179, g: 2.7981625, b: 400, a: 400}
-    - _EmissiveColorLDR: {r: 0.61774635, g: 0.07843137, b: 1, a: 1}
+    - _EmissiveColor: {r: 622.9943, g: 159.82578, b: 6.523501, a: 400}
+    - _EmissiveColorLDR: {r: 1, g: 0.54138726, b: 0.07843137, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
