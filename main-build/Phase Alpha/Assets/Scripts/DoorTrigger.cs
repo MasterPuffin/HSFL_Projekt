@@ -14,7 +14,7 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("on pressureplate: " + other.tag);
+        //Debug.Log("on pressureplate: " + other.tag);
         if (other.CompareTag("Player") || other.CompareTag("Rock"))
         {
             if (!open)
@@ -38,7 +38,7 @@ public class DoorTrigger : MonoBehaviour
             if (open)
             {
                 myDoor.Play("close gate", 0, 0.0f);
-                this.GetComponent<Animator>().Play("push up", 0, 0.0f);
+                //this.GetComponent<Animator>().Play("push up", 0, 0.0f);
                 open = false;
                 soundPlayed = false;
             }

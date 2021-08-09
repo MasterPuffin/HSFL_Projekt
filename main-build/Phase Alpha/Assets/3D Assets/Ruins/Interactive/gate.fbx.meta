@@ -14,10 +14,13 @@ ModelImporter:
     second: gate_main_ID|ruins_pressurePlate_lowAction
   - first:
       74: 6367542121969499967
-    second: gate_main_ID|gate_main_IDAction_close
+    second: gate_main_ID|gate_main_IDAction_open
   - first:
       74: -1450984879025938351
     second: gate_main_ID|gate_main_IDAction_open
+  - first:
+      74: -1450984879025938351
+    second: gate_main_ID|gate_main_IDAction_close
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -47,7 +50,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: gate_main_ID|gate_main_IDAction_close
+      name: gate_main_ID|gate_main_IDAction_open
       takeName: gate_main_ID|gate_main_IDAction
       internalID: 0
       firstFrame: 0
@@ -134,7 +137,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: gate_main_ID|gate_main_IDAction_open
+      name: gate_main_ID|gate_main_IDAction_close
       takeName: gate_main_ID|gate_main_IDAction
       internalID: 0
       firstFrame: 174
