@@ -105,18 +105,8 @@ public class PlayerController : NetworkBehaviour {
             //Delete Object on pickup
             Destroy(hit.collider.gameObject);
             //Execute onPickup logic if defined
-            /*
-            if (pi.onPickup != null) {
-                Debug.Log("Executing " + pi.onPickup.GetClass());
-
-                //TODO: Is this possible without creating a new gameObject?
-                GameObject tempGameObject = new GameObject();
-                tempGameObject.AddComponent(pi.onPickup.GetClass());
-                Destroy(tempGameObject);
-                Debug.Log(pi);
-                inventory.Add(pi);
-            }
-            */
+            pi.onPickup();
+            inventory.Add(pi);
         }
     }
 
@@ -131,17 +121,9 @@ public class PlayerController : NetworkBehaviour {
             maxPickupDistance, LayerMask.GetMask("Useable"))) {
             Debug.Log("player used at useable layer");
             UseableItem pi = hit.transform.GetComponent<UseableItem>();
-            //Execute onPickup logic if defined
-/*
-            if (pi.onUse != null) {
-                Debug.Log("Executing " + pi.onUse.GetClass());
-
-                //TODO: Is this possible without creating a new gameObject?
-                GameObject tempGameObject = new GameObject();
-                tempGameObject.AddComponent(pi.onUse.GetClass());
-                Destroy(tempGameObject);
-            }
-            */
+            //Execute onUse logic if defined
+            pi.onUse();
+            Destroy(pi);
         }
     }
 
