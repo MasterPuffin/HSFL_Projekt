@@ -325,10 +325,10 @@ MonoBehaviour:
     m_Value: 0.07333333
   cascadeShadowSplit1:
     m_OverrideState: 1
-    m_Value: 0.27333334
+    m_Value: 0.28
   cascadeShadowSplit2:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.61875
   cascadeShadowBorder0:
     m_OverrideState: 0
     m_Value: 0
