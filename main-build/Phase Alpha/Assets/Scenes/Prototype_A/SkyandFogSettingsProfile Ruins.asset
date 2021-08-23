@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 4
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   maxShadowDistance:
     m_OverrideState: 1
-    m_Value: 300
+    m_Value: 421.4
     min: 0
   directionalTransmissionMultiplier:
     m_OverrideState: 0
@@ -322,13 +322,13 @@ MonoBehaviour:
     max: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.07333333
+    m_Value: 0.13763645
   cascadeShadowSplit1:
     m_OverrideState: 1
-    m_Value: 0.28
+    m_Value: 0.37256762
   cascadeShadowSplit2:
     m_OverrideState: 1
-    m_Value: 0.61875
+    m_Value: 0.8637874
   cascadeShadowBorder0:
     m_OverrideState: 0
     m_Value: 0
