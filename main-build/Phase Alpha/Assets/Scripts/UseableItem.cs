@@ -5,7 +5,15 @@ public class UseableItem : MonoBehaviour
 {
     public string uiName;
     public string id;
-    //TODO: Replace
-    //public MonoScript onUse;
 
+    public enum itemTypes {Other};
+    public itemTypes itemType;
+
+    public void onUse() {
+        switch (itemType) {
+            default:
+                //do nothing
+                break;
+        }
+    }
 }
