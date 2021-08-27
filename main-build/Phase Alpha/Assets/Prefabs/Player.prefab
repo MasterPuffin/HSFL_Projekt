@@ -307,10 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d42c1754d08e9946a95f99562dccc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  jumpHeight: 1
+  playerSpeed: 20
+  jumpHeight: 2
   maxPickupDistance: 10
-  mouseSensitivity: 100
+  mouseSensitivity: -2
   clampAngle: 80
 --- !u!114 &5264597516646630089
 MonoBehaviour:
