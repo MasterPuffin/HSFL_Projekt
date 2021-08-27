@@ -43,7 +43,6 @@ public class PlayerController : NetworkBehaviour {
     private VivoxInstanceManager vivox;
     private NetworkedGameManager ngm;
     private PlayerInventory inventory;
-
     void Start() {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
@@ -120,10 +119,10 @@ public class PlayerController : NetworkBehaviour {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
             maxPickupDistance, LayerMask.GetMask("Useable"))) {
             Debug.Log("player used at useable layer");
-            UseableItem pi = hit.transform.GetComponent<UseableItem>();
+            hit.transform.GetComponent<UseableItem>().onUse();
             //Execute onUse logic if defined
-            pi.onUse();
-            Destroy(pi);
+            //pi.onUse();
+            //Destroy(pi);
         }
     }
 

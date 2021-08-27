@@ -17,9 +17,16 @@ public class UnlockTablet : MonoBehaviour
             // make tablet pickable
             gameObject.layer = 10;
 
-            // open doors to ruins, normally in Onpickup script
-            myDoor.Play("open gate", 0, 0.0f);
+            
         }
+    }
+
+    public void OpenRuins()
+    {
+        // open doors to ruins, normally in Onpickup script
+        myDoor.Play("open gate", 0, 0.0f);
+        myDoor.SetBool("open", true);
+        myDoor.SetBool("close", false);
     }
 
     private bool isPickable()

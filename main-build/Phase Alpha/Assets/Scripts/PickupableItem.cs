@@ -5,15 +5,17 @@ public class PickupableItem : MonoBehaviour {
     public string uiName;
     public string id;
     
-    public enum pickupTypes {Tablet, Other};
+    public enum pickupTypes {Tablet, Card, Other};
     public pickupTypes pickupType;
 
     public void onPickup() {
+       
         switch (pickupType) {
             case pickupTypes.Tablet:
-                GameObject tempGameObject = new GameObject();
-                tempGameObject.AddComponent<OnTabletUse>();
-                Destroy(tempGameObject);
+                GetComponent<UnlockTablet>().OpenRuins();
+                break;
+            case pickupTypes.Card:
+                GetComponent<TestOnPickup>().PickedUp();
                 break;
             default:
                 //do nothing
