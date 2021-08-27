@@ -204,7 +204,7 @@ MonoBehaviour:
     supportSSGI: 0
     supportSubsurfaceScattering: 1
     sssSampleBudget:
-      m_Values: 140000002800000050000000
+      m_Values: 140000002800000064000000
       m_SchemaId:
         m_Id: With3Levels
     supportVolumetrics: 1
@@ -442,6 +442,7 @@ MonoBehaviour:
   diffusionProfileSettingsList:
   - {fileID: 11400000, guid: fc0385f7a964a0d4eb70d78de147af7d, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 82dc2c66ae46c294590d08d72c6f12f7, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
