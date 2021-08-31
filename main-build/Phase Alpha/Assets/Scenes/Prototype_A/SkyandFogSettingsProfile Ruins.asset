@@ -30,8 +30,8 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Value: 189.5
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 507.14
+    m_Value: 26.1
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   indirectDiffuseLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 0.42
+    m_Value: 0.1
     min: 0
   indirectDiffuseLightingLayers:
     m_OverrideState: 0
@@ -265,12 +265,12 @@ MonoBehaviour:
     m_Value: 0
   m_MaximumRadiusInPixels:
     m_OverrideState: 1
-    m_Value: 40
+    m_Value: 32
     min: 16
     max: 256
   m_BilateralUpsample:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_DirectionCount:
     m_OverrideState: 1
     m_Value: 2

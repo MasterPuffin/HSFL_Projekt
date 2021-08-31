@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 904054495343620476}
   - component: {fileID: 4261534803666550489}
   - component: {fileID: 2071924223790729747}
+  - component: {fileID: -4658424739557903144}
   m_Layer: 0
   m_Name: Felsen-LP3
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-4658424739557903144
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558455607674104774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 728490542209296773, guid: c1f2e681e80d607409dbf51e8ae21379, type: 3}

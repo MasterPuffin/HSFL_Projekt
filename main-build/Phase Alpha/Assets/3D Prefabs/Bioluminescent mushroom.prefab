@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5051250627495981422}
   - component: {fileID: 7060890943704860068}
   - component: {fileID: 8519903702363904290}
+  - component: {fileID: 4019529076511499034}
   m_Layer: 0
   m_Name: Bioluminescent mushroom
   m_TagString: Untagged
@@ -91,8 +92,22 @@ CapsuleCollider:
   m_GameObject: {fileID: 8862431605430592625}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 4.5
   m_Height: 10.814867
   m_Direction: 1
   m_Center: {x: 0.26501843, y: 5.450545, z: -0.5}
+--- !u!64 &4019529076511499034
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8862431605430592625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4596785105057746894, guid: fbd63a580da769049ae88edd2f048074, type: 3}

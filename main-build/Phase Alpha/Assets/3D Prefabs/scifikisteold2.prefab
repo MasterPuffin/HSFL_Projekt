@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2076238383042814280}
   - component: {fileID: 3134395777582067437}
   - component: {fileID: 908437482252769831}
+  - component: {fileID: 443183568464512520}
   m_Layer: 0
   m_Name: scifikisteold2
   m_TagString: Untagged
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &443183568464512520
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701119737884064754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: a163a801b34c7a049b49db13a231ea69, type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5417705913766380873}
   - component: {fileID: 8971264217958779628}
   - component: {fileID: 6585566743308795430}
+  - component: {fileID: -7549847289840923934}
   m_Layer: 0
   m_Name: Stone1
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-7549847289840923934
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4639937418288717811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4504798329081696176, guid: eccf08eb706ac0e4e8c48f80fad82177, type: 3}
