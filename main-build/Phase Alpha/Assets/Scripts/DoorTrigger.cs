@@ -19,8 +19,10 @@ public class DoorTrigger : MonoBehaviour
         {
             if (!open)
             {
-                myDoor.Play("open gate", 0, 0.0f);
+                //myDoor.Play("open gate", 0, 0.0f);
                 //this.GetComponent<Animator>().Play("push down", 0, 0.0f);   
+                myDoor.SetBool("close", false);
+                myDoor.SetBool("open", true);
                 open = true;
                 if (soundPlayed == false)
                 {
@@ -37,8 +39,10 @@ public class DoorTrigger : MonoBehaviour
             Debug.Log("exit: " + other.tag);
             if (open)
             {
-                myDoor.Play("close gate", 0, 0.0f);
+                //myDoor.Play("close gate", 0, 0.0f);
                 //this.GetComponent<Animator>().Play("push up", 0, 0.0f);
+                myDoor.SetBool("close", true);
+                myDoor.SetBool("open", false);
                 open = false;
                 soundPlayed = false;
             }
