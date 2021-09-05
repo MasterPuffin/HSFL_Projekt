@@ -1,8 +1,11 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class UnlockTablet : MonoBehaviour
 {
-    public Animator myDoor = null;
+    public Animator myDoor1 = null;
+    public Animator myDoor2 = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +26,15 @@ public class UnlockTablet : MonoBehaviour
 
     public void OpenRuins()
     {
+        Debug.Log("opened ruins");
         // open doors to ruins, normally in Onpickup script
-        myDoor.Play("open gate", 0, 0.0f);
-        myDoor.SetBool("open", true);
-        myDoor.SetBool("close", false);
+        //myDoor.Play("open gate", 0, 0.0f);
+        myDoor1.SetBool("open", true);
+        myDoor1.SetBool("close", false);
+        myDoor2.SetBool("open", true);
+        myDoor2.SetBool("close", false);
     }
+
 
     private bool isPickable()
     {
