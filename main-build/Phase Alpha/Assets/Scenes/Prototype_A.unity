@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1874.0547, g: 630.5488, b: 339.9568, a: 1}
+  m_IndirectSpecularColor: {r: 1879.9111, g: 627.0293, b: 340.08618, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11485,8 +11485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Card2
   id: card2
-  onPickup: {fileID: 11500000, guid: 2142f9a301dfcb343a032c8973821b06, type: 3}
-  onDiscard: {fileID: 0}
+  pickupType: 0
 --- !u!65 &842379265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15762,8 +15761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Card1
   id: card1
-  onPickup: {fileID: 11500000, guid: 2142f9a301dfcb343a032c8973821b06, type: 3}
-  onDiscard: {fileID: 0}
+  pickupType: 0
 --- !u!65 &1125276629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18607,8 +18605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Test
   id: item/test
-  onPickup: {fileID: 11500000, guid: 2142f9a301dfcb343a032c8973821b06, type: 3}
-  onDiscard: {fileID: 0}
+  pickupType: 0
 --- !u!65 &1323625696
 BoxCollider:
   m_ObjectHideFlags: 0
