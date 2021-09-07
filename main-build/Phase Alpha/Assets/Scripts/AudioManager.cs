@@ -6,14 +6,14 @@ public class AudioManager : MonoBehaviour
 {
 
     public GameObject interactiblePushableRock;
-
-
+    public GameObject ruinsSoundtrackActivator;
 
     public AudioSource pushing_Edited_SomethingMetallicOrRocky = new AudioSource();
     public AudioSource pressurePlate_StonePlate_Edited = new AudioSource();
     public AudioSource pickSomethingUp_Edited = new AudioSource();
     public AudioSource deviceStartUp = new AudioSource();
     public AudioSource windyPlanetSurface = new AudioSource();
+    public AudioSource ruinsSoundtrack = new AudioSource();
     public float soundFadeOut = 0;
     public bool soundStopped = false;
     public bool soundGestartet = false;
@@ -23,15 +23,16 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         pushing_Edited_SomethingMetallicOrRocky.Stop();
+        windyPlanetSurface.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        
+        WindyPlanetSurface();
      //   PushingSound();
-        
+
 
     }
 
@@ -92,6 +93,20 @@ public class AudioManager : MonoBehaviour
 
     public void WindyPlanetSurface()
     {
-        windyPlanetSurface.Play();
+        if (ruinsSoundtrackActivator.GetComponent<RuinsSoundtrackActivator>().soundtrackNotPlaying == true)
+        {
+            windyPlanetSurface.volume = 0.250f;
+        }
+       
+        
+    else if(ruinsSoundtrackActivator.GetComponent<RuinsSoundtrackActivator>().soundtrackNotPlaying == false)
+        {
+            windyPlanetSurface.volume = 0.150f;
+        }
+    }
+
+    public void RuinsSoundtrack()
+    {
+        ruinsSoundtrack.Play();
     }
 }
