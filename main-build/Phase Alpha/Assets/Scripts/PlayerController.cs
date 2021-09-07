@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using MLAPI;
 using MLAPI.Messaging;
@@ -28,6 +29,12 @@ public class PlayerController : NetworkBehaviour {
     private float gravityValue = -9.81f;
 
     private bool jumping = false;
+    private bool pulling = false;
+    private bool running = false;
+    private bool crouching = false;
+    private CapsuleCollider collid;
+    float normalHeight;
+    public float reducedHeight;
 
     //Vector to continue the direction while jumping
     private Vector3 jumpMoveVec;
@@ -55,6 +62,11 @@ public class PlayerController : NetworkBehaviour {
 
             //DEBUG
             // Cursor.lockState = CursorLockMode.Locked;
+
+            //get collider of player
+            collid = GetComponent<CapsuleCollider>();
+            normalHeight = collid.height;
+            reducedHeight = 0.5f;
 
             //Enable camera attached to player
             transform.Find("PlayerCamera").gameObject.SetActive(true);
@@ -126,6 +138,57 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
+    public void OnPull()
+    {
+        if (!pulling)
+        {
+            pulling = true;
+        }
+        else
+        {
+            pulling = false;
+        }
+        Debug.Log("pulling");
+    }
+
+    public void OnCrouch()
+    {
+        if (!crouching)
+        {
+            Debug.Log("crouching");
+
+            //reduce height
+            collid.height = reducedHeight;
+            crouching = true;
+        }
+        else
+        {
+            Debug.Log("not crouching");
+
+            //add height
+            collid.height = normalHeight;
+            crouching = false;
+        }
+        
+    }
+
+    public void OnRunning()
+    {
+        if (!running)
+        {
+            Debug.Log("running");
+            playerSpeed += 5;
+            running = true;
+        }
+        else
+        {
+            Debug.Log("not running");
+            playerSpeed -= 5;
+            running = false;
+        }
+
+    }
+
     public void OnCamera(InputValue input) {
         mouse = input.Get<Vector2>();
     }
@@ -134,6 +197,10 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             Look();
             MovePlayer();
+        }
+        if (pulling)
+        {
+            //check if touching rock / auf update von rock zugreifen??
         }
     }
 
