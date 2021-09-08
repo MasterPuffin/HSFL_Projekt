@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 
     public GameObject interactiblePushableRock;
     public GameObject ruinsSoundtrackActivator;
+    public GameObject monsterSoundtrackActivator;
 
     public AudioSource pushing_Edited_SomethingMetallicOrRocky = new AudioSource();
     public AudioSource pressurePlate_StonePlate_Edited = new AudioSource();
@@ -14,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource deviceStartUp = new AudioSource();
     public AudioSource windyPlanetSurface = new AudioSource();
     public AudioSource ruinsSoundtrack = new AudioSource();
+    public AudioSource monsterSoundtrack = new AudioSource();
     public float soundFadeOut = 0;
     public bool soundStopped = false;
     public bool soundGestartet = false;
@@ -33,7 +35,27 @@ public class AudioManager : MonoBehaviour
         WindyPlanetSurface();
      //   PushingSound();
 
-
+        if(monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying == false)
+        {
+            ruinsSoundtrack.volume -= Time.deltaTime / 4.0f;
+            if (monsterSoundtrack.volume <= 0.850f)
+            {
+                monsterSoundtrack.volume += Time.deltaTime / 2.0f;
+                
+            } else
+            {
+                ruinsSoundtrack.Stop();
+            }
+            
+        } else if(monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying == true)
+        {
+            monsterSoundtrack.volume -= Time.deltaTime / 4.0f;
+            if (monsterSoundtrack.volume <= 0f)
+            {
+                monsterSoundtrack.Stop();
+            }
+            
+        }
     }
 
 
@@ -107,6 +129,15 @@ public class AudioManager : MonoBehaviour
 
     public void RuinsSoundtrack()
     {
+        ruinsSoundtrack.volume = 1.0f;
         ruinsSoundtrack.Play();
+        monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying = true;
+    }
+
+    public void MonsterSoundtrack()
+    {
+        monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying = false;
+        monsterSoundtrack.Play();
+
     }
 }

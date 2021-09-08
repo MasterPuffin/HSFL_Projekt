@@ -5,7 +5,7 @@ using UnityEngine;
 public class RuinsSoundtrackActivator : MonoBehaviour
 {
     // Start is called before the first frame update
-    public AudioSource ruinsSoundtrack;
+
     public GameObject audioManager;
     public bool soundtrackNotPlaying;
 
