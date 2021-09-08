@@ -32,10 +32,13 @@ public class PlayerController : NetworkBehaviour {
     private bool pulling = false;
     private bool running = false;
     private bool crouching = false;
+    private bool moving = false;
     private CapsuleCollider collid;
     float normalHeight;
     public float reducedHeight;
 
+    // get player animator
+    private Animator animator;
     //Vector to continue the direction while jumping
     private Vector3 jumpMoveVec;
 
@@ -54,6 +57,7 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
             inventory = GetComponent<PlayerInventory>();
+            animator = transform.GetChild(0).GetComponent<Animator>();
 
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = -rot.y;
@@ -94,6 +98,16 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnMove(InputValue input) {
+        if (!moving)
+        {
+            moving = true;
+            Debug.Log("start moving");
+        }
+        else
+        {
+            moving = false;
+            Debug.Log("stop moving");
+        }
         Vector2 inputVec = input.Get<Vector2>();
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
     }
@@ -156,7 +170,7 @@ public class PlayerController : NetworkBehaviour {
         if (!crouching)
         {
             Debug.Log("crouching");
-
+            
             //reduce height
             collid.height = reducedHeight;
             crouching = true;
@@ -202,6 +216,46 @@ public class PlayerController : NetworkBehaviour {
         {
             //check if touching rock / auf update von rock zugreifen??
         }
+        if (!moving && !crouching && !running)
+        {
+            animator.SetBool("isCrouchWalking", false);
+            animator.SetBool("isCrouchIdling", false);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isIdling", true);
+        }else if (moving && !crouching && !running)
+        {
+            animator.SetBool("isIdling", false);
+            animator.SetBool("isCrouchWalking", false);
+            animator.SetBool("isCrouchIdling", false);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", true);
+        }else if (moving && !crouching && running)
+        {
+            animator.SetBool("isIdling", false);
+            animator.SetBool("isCrouchWalking", false);
+            animator.SetBool("isCrouchIdling", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", true);
+        }
+        else if (!moving && crouching)
+        {
+            animator.SetBool("isIdling", false);
+            animator.SetBool("isCrouchWalking", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isCrouchIdling", true);
+        }
+        else if (moving && crouching)
+        {
+            animator.SetBool("isIdling", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isCrouchIdling", false);
+            animator.SetBool("isCrouchWalking", true);
+        }
+
+
     }
 
     private void Look() {
