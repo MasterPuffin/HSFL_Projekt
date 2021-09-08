@@ -6,7 +6,7 @@ public class UseableItem : MonoBehaviour
     public string uiName;
     public string id;
 
-    public enum itemTypes {Tablet, Labyrinth, Door, Other};
+    public enum itemTypes {Tablet, Labyrinth, Door, Plate, Other};
     public itemTypes itemType;
     //private GameObject tempGameObject;
     public void onUse() {
@@ -20,6 +20,9 @@ public class UseableItem : MonoBehaviour
                 break;
             case itemTypes.Door:
                 GetComponent<ButtonDoor>().Button();
+                break;
+            case itemTypes.Plate:
+                GetComponent<PlaceBlocksOnPlate>().Pressed();
                 break;
             default:
                 //do nothing

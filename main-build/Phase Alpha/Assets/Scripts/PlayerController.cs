@@ -29,7 +29,7 @@ public class PlayerController : NetworkBehaviour {
     private float gravityValue = -9.81f;
 
     private bool jumping = false;
-    private bool pulling = false;
+    public bool pulling = false;
     private bool running = false;
     private bool crouching = false;
     private bool moving = false;
@@ -211,10 +211,6 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             Look();
             MovePlayer();
-        }
-        if (pulling)
-        {
-            //check if touching rock / auf update von rock zugreifen??
         }
         if (!moving && !crouching && !running)
         {

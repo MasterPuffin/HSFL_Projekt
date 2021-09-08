@@ -4,12 +4,13 @@ using UnityEngine;
 public class PickupableItem : MonoBehaviour {
     public string uiName;
     public string id;
-    
+    public GameObject audioManager;
     public enum pickupTypes {Tablet, Card, Other};
     public pickupTypes pickupType;
 
-    public void onPickup() {
-       
+    public void onPickup()
+    {
+        audioManager.GetComponent<AudioManager>().PickSomethingUpSound();
         switch (pickupType) {
             case pickupTypes.Tablet:
                 GetComponent<UnlockTablet>().OpenRuins();
