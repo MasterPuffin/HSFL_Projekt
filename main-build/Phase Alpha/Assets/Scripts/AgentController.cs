@@ -66,6 +66,6 @@ public class AgentController : MonoBehaviour
                 agent.SetDestination(currentPoint.transform.position);
             }
         }
-
+        //Debug.Log(player1);
     }
 }
