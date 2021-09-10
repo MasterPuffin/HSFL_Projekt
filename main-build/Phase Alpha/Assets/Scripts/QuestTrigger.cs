@@ -17,6 +17,14 @@ public class QuestTrigger : MonoBehaviour
     {
     }
 
+    public void ManualTrigger()
+    {
+        if (!isTriggered)
+        {
+            isTriggered = true;
+            GameObject.Find("PlayerCanvas").GetComponent<QuestController>().QuestAbgeschlossen();
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!isTriggered)

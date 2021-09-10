@@ -84,7 +84,43 @@ public class QuestController : MonoBehaviour
         //if second quest is done
         if (text.text == questText2 && text.color == Color.green)
         {
-            text.text = "Quests done";
+            text.color = Color.white;
+            text.text = questText3;
+            StartCoroutine(ShowTextCoroutine());
+        }
+
+        if (text.text == questText3 && text.color == Color.green)
+        {
+            text.color = Color.white;
+            text.text = questText4;
+            StartCoroutine(ShowTextCoroutine());
+        }
+
+        if (text.text == questText4 && text.color == Color.green)
+        {
+            text.color = Color.white;
+            text.text = questText5;
+            StartCoroutine(ShowTextCoroutine());
+        }
+
+        if (text.text == questText5 && text.color == Color.green)
+        {
+            text.color = Color.white;
+            text.text = questText6;
+            StartCoroutine(ShowTextCoroutine());
+        }
+
+        if (text.text == questText6 && text.color == Color.green)
+        {
+            text.color = Color.white;
+            text.text = questText7;
+            StartCoroutine(ShowTextCoroutine());
+        }
+        if (text.text == questText7 && text.color == Color.green)
+        {
+            
+            text.text = "All Quests done";
+            StartCoroutine(ShowTextCoroutine());
         }
 
         //AusblendSound
