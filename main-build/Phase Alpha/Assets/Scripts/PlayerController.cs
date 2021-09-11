@@ -36,7 +36,9 @@ public class PlayerController : NetworkBehaviour {
     private CapsuleCollider collid;
     float normalHeight;
     public float reducedHeight;
-    public GameObject audioManager;
+    public AudioSource fastWalking;
+    public AudioSource slowWalking;
+    private bool walkingActive = false;
 
     // get player animator
     private Animator animator;
@@ -59,6 +61,8 @@ public class PlayerController : NetworkBehaviour {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
             inventory = GetComponent<PlayerInventory>();
             animator = transform.GetChild(0).GetComponent<Animator>();
+            slowWalking.volume = 0.0f;
+            fastWalking.volume = 0.0f;
 
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = -rot.y;
@@ -91,6 +95,10 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
+   
+        
+    
+
     private void OnDestroy() {
         if (IsLocalPlayer) {
             Debug.Log("Logging out of Vivox");
@@ -102,11 +110,13 @@ public class PlayerController : NetworkBehaviour {
         if (!moving)
         {
             moving = true;
+            
             Debug.Log("start moving");
         }
         else
         {
             moving = false;
+            
             Debug.Log("stop moving");
         }
         Vector2 inputVec = input.Get<Vector2>();
@@ -194,12 +204,14 @@ public class PlayerController : NetworkBehaviour {
             Debug.Log("running");
             playerSpeed += 5;
             running = true;
+            fastWalking.volume = 1.0f;
         }
         else
         {
             Debug.Log("not running");
             playerSpeed -= 5;
             running = false;
+            fastWalking.volume = 0.0f;
         }
 
     }
@@ -212,6 +224,7 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             Look();
             MovePlayer();
+            
         }
         if (!moving && !crouching && !running)
         {
@@ -251,6 +264,8 @@ public class PlayerController : NetworkBehaviour {
             animator.SetBool("isCrouchIdling", false);
             animator.SetBool("isCrouchWalking", true);
         }
+
+        
 
 
     }
@@ -292,6 +307,31 @@ public class PlayerController : NetworkBehaviour {
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (jumping == false)
+        {
+            if (walkingActive == false && moving == true)
+            {
+                slowWalking.Play();
+                walkingActive = true;
+                slowWalking.volume = 1.0f;
+            }
+
+            if (walkingActive == true && moving == false)
+            {
+                slowWalking.Stop();
+                slowWalking.volume = 0.0f;
+                walkingActive = false;
+            }
+        } else
+        {
+            slowWalking.volume = 0.0f;
+        }
+
+
+           
+        
+       
     }
 
     //Teleports a player as the setting of transform.position is only possible if
