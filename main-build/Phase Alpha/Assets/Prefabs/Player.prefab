@@ -750,6 +750,7 @@ MonoBehaviour:
   maxPickupDistance: 15
   pulling: 0
   reducedHeight: 0
+  audioManager: {fileID: 0}
   mouseSensitivity: -5
   clampAngle: 80
 --- !u!114 &5264597516646630089

@@ -36,6 +36,7 @@ public class PlayerController : NetworkBehaviour {
     private CapsuleCollider collid;
     float normalHeight;
     public float reducedHeight;
+    public GameObject audioManager;
 
     // get player animator
     private Animator animator;

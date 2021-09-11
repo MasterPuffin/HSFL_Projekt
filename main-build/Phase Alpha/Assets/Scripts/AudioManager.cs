@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource pressurePlate_StonePlate_Edited = new AudioSource();
     public AudioSource pickSomethingUp_Edited = new AudioSource();
     public AudioSource deviceStartUp = new AudioSource();
+    public AudioSource gearMoving = new AudioSource();
+    public AudioSource doorOpening = new AudioSource();
     public AudioSource windyPlanetSurface = new AudioSource();
     public AudioSource ruinsSoundtrack = new AudioSource();
     public AudioSource monsterSoundtrack = new AudioSource();
@@ -113,6 +115,28 @@ public class AudioManager : MonoBehaviour
         deviceStartUp.Play();
     }
 
+    public void GearSoundStart()
+    {
+        gearMoving.Play();
+    }
+
+    public void GearSoundStop()
+    {
+        gearMoving.Stop();
+    }
+
+    public void OpenDoorSound()
+    {
+        doorOpening.Play();
+    }
+
+
+    public void windVolumeAdjustment()
+    {
+        monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying = true;
+        windyPlanetSurface.volume = 0.250f;
+    }
+
     public void WindyPlanetSurface()
     {
         if (ruinsSoundtrackActivator.GetComponent<RuinsSoundtrackActivator>().soundtrackNotPlaying == true)
@@ -140,4 +164,6 @@ public class AudioManager : MonoBehaviour
         monsterSoundtrack.Play();
 
     }
+
+    
 }

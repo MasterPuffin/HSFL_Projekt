@@ -16,6 +16,8 @@ public class MoveGear : MonoBehaviour
     private PlayerTrigger playerTrigger;
     private GameObject player;
     private bool playerFound;
+    public GameObject audioManager;
+    private bool soundNotStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -64,20 +66,36 @@ public class MoveGear : MonoBehaviour
             upwards = true;
             downwards = false;
         }
+
+        
+
+        
     }
+
 
     private void CheckIfPlayerIsWatching()
     {
         if (player.transform.eulerAngles.y < 315 && player.transform.eulerAngles.y > 225)
         {
+            
             watching = false;
             //Debug.Log("playerWatching");
+            if (soundNotStarted == false)
+            {
+                audioManager.GetComponent<AudioManager>().GearSoundStart();
+                soundNotStarted = true;
+            }
         }
         else
         {
 
             watching = true;
             //Debug.Log(player.transform.eulerAngles.y);
+            if (soundNotStarted == true)
+            {
+                audioManager.GetComponent<AudioManager>().GearSoundStop();
+                soundNotStarted = false;
+            }
         }
     }
 }
