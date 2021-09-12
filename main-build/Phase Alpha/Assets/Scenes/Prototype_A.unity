@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1879.9111, g: 627.0293, b: 340.08618, a: 1}
+  m_IndirectSpecularColor: {r: 1874.221, g: 627.4984, b: 339.33905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11485,6 +11485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Card2
   id: card2
+  audioManager: {fileID: 0}
   pickupType: 0
 --- !u!65 &842379265
 BoxCollider:
@@ -14467,11 +14468,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactiblePushableRock: {fileID: 0}
+  ruinsSoundtrackActivator: {fileID: 0}
+  monsterSoundtrackActivator: {fileID: 0}
   pushing_Edited_SomethingMetallicOrRocky: {fileID: 1991404833}
   pressurePlate_StonePlate_Edited: {fileID: 16448539}
   pickSomethingUp_Edited: {fileID: 404100852}
   deviceStartUp: {fileID: 268712761}
+  gearMoving: {fileID: 0}
+  doorOpening: {fileID: 0}
   windyPlanetSurface: {fileID: 1294347133}
+  ruinsSoundtrack: {fileID: 0}
+  monsterSoundtrack: {fileID: 0}
   soundFadeOut: 0
   soundStopped: 0
   soundGestartet: 0
@@ -15761,6 +15768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Card1
   id: card1
+  audioManager: {fileID: 0}
   pickupType: 0
 --- !u!65 &1125276629
 BoxCollider:
@@ -18605,6 +18613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiName: Test
   id: item/test
+  audioManager: {fileID: 0}
   pickupType: 0
 --- !u!65 &1323625696
 BoxCollider:
