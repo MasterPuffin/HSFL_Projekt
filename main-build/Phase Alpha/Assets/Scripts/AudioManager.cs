@@ -131,7 +131,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void windVolumeAdjustment()
+    public void WindVolumeAdjustment()
     {
         monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying = true;
         windyPlanetSurface.volume = 0.250f;
