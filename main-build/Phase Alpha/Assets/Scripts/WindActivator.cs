@@ -7,10 +7,7 @@ public class WindActivator : MonoBehaviour
     public GameObject audioManager;
     
     private void OnTriggerEnter(Collider other)
-    {
-        
-            audioManager.GetComponent<AudioManager>().WindVolumeAdjustment();
-         
-
+    {        
+         audioManager.GetComponent<AudioManager>().WindVolumeAdjustment();
     }
 }

@@ -66,8 +66,8 @@ public class PlayerController : NetworkBehaviour {
             animator = transform.GetChild(0).GetComponent<Animator>();
 
             //TODO: When enabled the player falls through the map
-            // slowWalking.volume = 0.0f;
-            // fastWalking.volume = 0.0f;
+             slowWalking.volume = 0.0f;
+             fastWalking.volume = 0.0f;
 
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = -rot.y;
@@ -109,7 +109,7 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnMove(InputValue input) {
-        /*
+        
         if (!moving) {
             moving = true;
             Debug.Log("start moving");
@@ -117,7 +117,7 @@ public class PlayerController : NetworkBehaviour {
             moving = false;
             Debug.Log("stop moving");
         }
-        */
+        
 
         Vector2 inputVec = input.Get<Vector2>();
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);

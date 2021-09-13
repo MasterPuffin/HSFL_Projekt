@@ -65,19 +65,14 @@ public class MoveGear : MonoBehaviour
         {
             upwards = true;
             downwards = false;
-        }
-
-        
-
-        
+        }       
     }
 
 
     private void CheckIfPlayerIsWatching()
     {
         if (player.transform.eulerAngles.y < 315 && player.transform.eulerAngles.y > 225)
-        {
-            
+        {            
             watching = false;
             //Debug.Log("playerWatching");
             if (soundNotStarted == false)
@@ -88,7 +83,6 @@ public class MoveGear : MonoBehaviour
         }
         else
         {
-
             watching = true;
             //Debug.Log(player.transform.eulerAngles.y);
             if (soundNotStarted == true)

@@ -162,7 +162,6 @@ public class AudioManager : MonoBehaviour
     {
         monsterSoundtrackActivator.GetComponent<MonsterSoundtrackActivator>().soundtrackNotPlaying = false;
         monsterSoundtrack.Play();
-
     }
 
     
