@@ -14,7 +14,7 @@ public class QuestController : MonoBehaviour
     public String questText4 = "Auftrag: Erkunden Sie die Ruinen";      //bis Artefakt
     public String questText5 = "Auftrag: Finde einen Weg aus den Ruinen heraus";      //bis Schluchten
     public String questText6 = "Auftrag: Finde das Logbuch";      //bis logbuch
-    public String questText7 = "Auftrag: Kehre zum Raumschiff zurück";      //bis Ende
+    public String questText7 = "Auftrag: Kehre zum Raumschiff zurï¿½ck";      //bis Ende
     private bool cr_running;
 
     // Start is called before the first frame update
@@ -63,7 +63,7 @@ public class QuestController : MonoBehaviour
     {
         cr_running = true;
         //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        // Debug.Log("Started Coroutine at timestamp : " + Time.time);
         text.gameObject.SetActive(true);
 
         //EinblendSound
@@ -124,7 +124,7 @@ public class QuestController : MonoBehaviour
         }
 
         //AusblendSound
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         cr_running = false;
     }
 }

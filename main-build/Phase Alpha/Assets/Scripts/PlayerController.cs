@@ -42,6 +42,7 @@ public class PlayerController : NetworkBehaviour {
 
     // get player animator
     private Animator animator;
+
     //Vector to continue the direction while jumping
     private Vector3 jumpMoveVec;
 
@@ -56,6 +57,7 @@ public class PlayerController : NetworkBehaviour {
     private VivoxInstanceManager vivox;
     private NetworkedGameManager ngm;
     private PlayerInventory inventory;
+
     void Start() {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
@@ -78,6 +80,7 @@ public class PlayerController : NetworkBehaviour {
             reducedHeight = 0.5f;
 
             //Enable camera attached to player
+            Debug.Log("enable cam");
             transform.Find("PlayerCamera").gameObject.SetActive(true);
             distToGround = GetComponent<Collider>().bounds.extents.y;
 
@@ -95,9 +98,6 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
-   
-        
-    
 
     private void OnDestroy() {
         if (IsLocalPlayer) {
@@ -107,18 +107,17 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnMove(InputValue input) {
-        if (!moving)
-        {
+        /*
+        if (!moving) {
             moving = true;
-            
+
             Debug.Log("start moving");
-        }
-        else
-        {
+        } else {
             moving = false;
-            
+
             Debug.Log("stop moving");
         }
+*/
         Vector2 inputVec = input.Get<Vector2>();
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
     }
@@ -163,57 +162,44 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
-    public void OnPull()
-    {
-        if (!pulling)
-        {
+    public void OnPull() {
+        if (!pulling) {
             pulling = true;
-        }
-        else
-        {
+        } else {
             pulling = false;
         }
+
         Debug.Log("pulling");
     }
 
-    public void OnCrouch()
-    {
-        if (!crouching)
-        {
+    public void OnCrouch() {
+        if (!crouching) {
             Debug.Log("crouching");
-            
+
             //reduce height
             collid.height = reducedHeight;
             crouching = true;
-        }
-        else
-        {
+        } else {
             Debug.Log("not crouching");
 
             //add height
             collid.height = normalHeight;
             crouching = false;
         }
-        
     }
 
-    public void OnRunning()
-    {
-        if (!running)
-        {
+    public void OnRunning() {
+        if (!running) {
             Debug.Log("running");
             playerSpeed += 5;
             running = true;
             fastWalking.volume = 1.0f;
-        }
-        else
-        {
+        } else {
             Debug.Log("not running");
             playerSpeed -= 5;
             running = false;
             fastWalking.volume = 0.0f;
         }
-
     }
 
     public void OnCamera(InputValue input) {
@@ -224,50 +210,40 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             Look();
             MovePlayer();
-            
-        }
-        if (!moving && !crouching && !running)
-        {
-            animator.SetBool("isCrouchWalking", false);
-            animator.SetBool("isCrouchIdling", false);
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isIdling", true);
-        }else if (moving && !crouching && !running)
-        {
-            animator.SetBool("isIdling", false);
-            animator.SetBool("isCrouchWalking", false);
-            animator.SetBool("isCrouchIdling", false);
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isWalking", true);
-        }else if (moving && !crouching && running)
-        {
-            animator.SetBool("isIdling", false);
-            animator.SetBool("isCrouchWalking", false);
-            animator.SetBool("isCrouchIdling", false);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", true);
-        }
-        else if (!moving && crouching)
-        {
-            animator.SetBool("isIdling", false);
-            animator.SetBool("isCrouchWalking", false);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isCrouchIdling", true);
-        }
-        else if (moving && crouching)
-        {
-            animator.SetBool("isIdling", false);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isCrouchIdling", false);
-            animator.SetBool("isCrouchWalking", true);
-        }
-
-        
 
 
+            if (!moving && !crouching && !running) {
+                animator.SetBool("isCrouchWalking", false);
+                animator.SetBool("isCrouchIdling", false);
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isIdling", true);
+            } else if (moving && !crouching && !running) {
+                animator.SetBool("isIdling", false);
+                animator.SetBool("isCrouchWalking", false);
+                animator.SetBool("isCrouchIdling", false);
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isWalking", true);
+            } else if (moving && !crouching && running) {
+                animator.SetBool("isIdling", false);
+                animator.SetBool("isCrouchWalking", false);
+                animator.SetBool("isCrouchIdling", false);
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isRunning", true);
+            } else if (!moving && crouching) {
+                animator.SetBool("isIdling", false);
+                animator.SetBool("isCrouchWalking", false);
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isCrouchIdling", true);
+            } else if (moving && crouching) {
+                animator.SetBool("isIdling", false);
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isCrouchIdling", false);
+                animator.SetBool("isCrouchWalking", true);
+            }
+        }
     }
 
     private void Look() {
@@ -308,30 +284,21 @@ public class PlayerController : NetworkBehaviour {
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if (jumping == false)
-        {
-            if (walkingActive == false && moving == true)
-            {
+        if (jumping == false) {
+            if (walkingActive == false && moving == true) {
                 slowWalking.Play();
                 walkingActive = true;
                 slowWalking.volume = 1.0f;
             }
 
-            if (walkingActive == true && moving == false)
-            {
+            if (walkingActive == true && moving == false) {
                 slowWalking.Stop();
                 slowWalking.volume = 0.0f;
                 walkingActive = false;
             }
-        } else
-        {
+        } else {
             slowWalking.volume = 0.0f;
         }
-
-
-           
-        
-       
     }
 
     //Teleports a player as the setting of transform.position is only possible if

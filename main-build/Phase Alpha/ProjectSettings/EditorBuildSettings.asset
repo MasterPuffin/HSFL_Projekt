@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Hauptmenu.unity
     guid: 63d26ccc90c9c9647927baf756ab89cc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ZwischensequenzProlog.unity
     guid: 66100ccc62916864d98f6ea6e9badf03
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Prototype_A_2.unity
     guid: 6ac2711a6b3a1ed44906ca1cbc630c19
+  - enabled: 1
+    path: Assets/Scenes/NetworkAndVoiceDemo.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
