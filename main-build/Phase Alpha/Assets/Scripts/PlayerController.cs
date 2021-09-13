@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using MLAPI;
 using MLAPI.Messaging;
@@ -38,6 +37,7 @@ public class PlayerController : NetworkBehaviour {
     public float reducedHeight;
     public AudioSource fastWalking;
     public AudioSource slowWalking;
+
     private bool walkingActive = false;
 
     // get player animator
@@ -62,9 +62,12 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
             inventory = GetComponent<PlayerInventory>();
+
             animator = transform.GetChild(0).GetComponent<Animator>();
-            slowWalking.volume = 0.0f;
-            fastWalking.volume = 0.0f;
+
+            //TODO: When enabled the player falls through the map
+            // slowWalking.volume = 0.0f;
+            // fastWalking.volume = 0.0f;
 
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = -rot.y;
@@ -75,12 +78,12 @@ public class PlayerController : NetworkBehaviour {
             // Cursor.lockState = CursorLockMode.Locked;
 
             //get collider of player
-            collid = GetComponent<CapsuleCollider>();
-            normalHeight = collid.height;
-            reducedHeight = 0.5f;
+            //TODO: When enabled the camera is not working
+            // collid = GetComponent<CapsuleCollider>();
+            // normalHeight = collid.height;
+            // reducedHeight = 0.5f;
 
             //Enable camera attached to player
-            Debug.Log("enable cam");
             transform.Find("PlayerCamera").gameObject.SetActive(true);
             distToGround = GetComponent<Collider>().bounds.extents.y;
 
@@ -98,7 +101,6 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
-
     private void OnDestroy() {
         if (IsLocalPlayer) {
             Debug.Log("Logging out of Vivox");
@@ -110,14 +112,13 @@ public class PlayerController : NetworkBehaviour {
         /*
         if (!moving) {
             moving = true;
-
             Debug.Log("start moving");
         } else {
             moving = false;
-
             Debug.Log("stop moving");
         }
-*/
+        */
+
         Vector2 inputVec = input.Get<Vector2>();
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
     }
@@ -139,7 +140,6 @@ public class PlayerController : NetworkBehaviour {
             PickupableItem pi = hit.transform.GetComponent<PickupableItem>();
             //Delete Object on pickup
             Destroy(hit.collider.gameObject);
-            //Execute onPickup logic if defined
             pi.onPickup();
             inventory.Add(pi);
         }
@@ -154,11 +154,8 @@ public class PlayerController : NetworkBehaviour {
         //Only detects a hit when the item is on the "Usableable Objects" layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
             maxPickupDistance, LayerMask.GetMask("Useable"))) {
-            Debug.Log("player used at useable layer");
+            Debug.Log("player used at usable layer");
             hit.transform.GetComponent<UseableItem>().onUse();
-            //Execute onUse logic if defined
-            //pi.onUse();
-            //Destroy(pi);
         }
     }
 
@@ -172,18 +169,17 @@ public class PlayerController : NetworkBehaviour {
         Debug.Log("pulling");
     }
 
+    //TODO: Not working because collider is not working
     public void OnCrouch() {
         if (!crouching) {
             Debug.Log("crouching");
-
             //reduce height
-            collid.height = reducedHeight;
+            // collid.height = reducedHeight;
             crouching = true;
         } else {
             Debug.Log("not crouching");
-
             //add height
-            collid.height = normalHeight;
+            // collid.height = normalHeight;
             crouching = false;
         }
     }
@@ -211,7 +207,9 @@ public class PlayerController : NetworkBehaviour {
             Look();
             MovePlayer();
 
-
+            //TODO: This is inefficient way beyond belief. Please fix this abomination
+            //TODO: Doesn't work, because the player has to animation component
+            /*
             if (!moving && !crouching && !running) {
                 animator.SetBool("isCrouchWalking", false);
                 animator.SetBool("isCrouchIdling", false);
@@ -243,6 +241,7 @@ public class PlayerController : NetworkBehaviour {
                 animator.SetBool("isCrouchIdling", false);
                 animator.SetBool("isCrouchWalking", true);
             }
+            */
         }
     }
 
@@ -285,13 +284,13 @@ public class PlayerController : NetworkBehaviour {
         controller.Move(playerVelocity * Time.deltaTime);
 
         if (jumping == false) {
-            if (walkingActive == false && moving == true) {
+            if (!walkingActive && moving) {
                 slowWalking.Play();
                 walkingActive = true;
                 slowWalking.volume = 1.0f;
             }
 
-            if (walkingActive == true && moving == false) {
+            if (walkingActive && !moving) {
                 slowWalking.Stop();
                 slowWalking.volume = 0.0f;
                 walkingActive = false;
