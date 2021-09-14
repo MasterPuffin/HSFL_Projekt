@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -28,6 +29,8 @@ public class SettingsMenu : MonoBehaviour
                 currentResIndex = i;
             }
         }
+
+        options=options.Distinct().ToList();
         resDropdown.AddOptions(options);
         resDropdown.value = currentResIndex;
         resDropdown.RefreshShownValue();
