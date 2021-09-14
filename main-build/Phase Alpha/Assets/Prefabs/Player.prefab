@@ -297,6 +297,18 @@ MonoBehaviour:
     besch\xE4digt wird, werden wir vor\xFCbergehend die Ger\xE4te deaktivieren. Die
     beiden Schl\xFCsselkarten f\xFCr dieses Tablet teilen wir uns vor\xFCbergehend.
     Jeder von uns hat eine. Wir warten hier in der Basis ab.\r\n"
+--- !u!114 &6408697645529217601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294375977426181763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc35dff681b67949b2be0090fa6e828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2579543811104225093
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,13 +828,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FixedSendsPerSecond: 20
+  FixedSendsPerSecond: 120
   AssumeSyncedSends: 1
   InterpolatePosition: 1
   SnapDistance: 10
   InterpolateServer: 1
   MinMeters: 0.15
-  MinDegrees: 1.5
+  MinDegrees: 0.5
   ExtrapolatePosition: 0
   MaxSendsToExtrapolate: 5
   Channel: 
@@ -1712,6 +1724,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 819010930184624008, guid: edf17a3c82ff90747af82f5abf7d4f4c, type: 3}
   m_PrefabInstance: {fileID: 1288287472352498609}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1294375977426181763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6305383813565746, guid: edf17a3c82ff90747af82f5abf7d4f4c, type: 3}
+  m_PrefabInstance: {fileID: 1288287472352498609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5153421877343984265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1852,13 +1869,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5fc1371a6db3c45a38c08f789af2e5, type: 3}
---- !u!4 &8623342502445830347 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4339925325440104638, guid: 3a5fc1371a6db3c45a38c08f789af2e5, type: 3}
-  m_PrefabInstance: {fileID: 5446759909865285749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &8623342502445830348 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4339925325440104633, guid: 3a5fc1371a6db3c45a38c08f789af2e5, type: 3}
+  m_PrefabInstance: {fileID: 5446759909865285749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8623342502445830347 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4339925325440104638, guid: 3a5fc1371a6db3c45a38c08f789af2e5, type: 3}
   m_PrefabInstance: {fileID: 5446759909865285749}
   m_PrefabAsset: {fileID: 0}
