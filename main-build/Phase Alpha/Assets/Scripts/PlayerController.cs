@@ -14,11 +14,11 @@ using Random = UnityEngine.Random;
  */
 
 public class PlayerController : NetworkBehaviour {
-    private Vector3 moveVec;
+    
     private CharacterController controller;
     private Vector3 playerVelocity;
 
-    private bool groundedPlayer;
+    public bool groundedPlayer;
     private float distToGround;
 
     public float playerSpeed = 4.0f;
@@ -27,7 +27,7 @@ public class PlayerController : NetworkBehaviour {
 
     private float gravityValue = -9.81f;
 
-    private bool jumping = false;
+    public bool jumping = false;
     public bool pulling = false;
     private bool running = false;
     private bool crouching = false;
@@ -43,8 +43,9 @@ public class PlayerController : NetworkBehaviour {
     // get player animator
     private Animator animator;
 
+    public Vector3 moveVec;
     //Vector to continue the direction while jumping
-    private Vector3 jumpMoveVec;
+    private Vector3 preJumpMoveVec;
 
     public float mouseSensitivity = 30.0f;
     public float clampAngle = 80.0f;
@@ -66,8 +67,8 @@ public class PlayerController : NetworkBehaviour {
             animator = transform.GetChild(0).GetComponent<Animator>();
 
             //TODO: When enabled the player falls through the map
-             slowWalking.volume = 0.0f;
-             fastWalking.volume = 0.0f;
+            slowWalking.volume = 0.0f;
+            fastWalking.volume = 0.0f;
 
             Vector3 rot = transform.localRotation.eulerAngles;
             rotY = -rot.y;
@@ -79,9 +80,9 @@ public class PlayerController : NetworkBehaviour {
 
             //get collider of player
             //TODO: When enabled the camera is not working
-             collid = GetComponent<CapsuleCollider>();
-             normalHeight = collid.height;
-             reducedHeight = 0.5f;
+            collid = GetComponent<CapsuleCollider>();
+            normalHeight = collid.height;
+            reducedHeight = 0.5f;
 
             //Enable camera attached to player
             transform.Find("PlayerCamera").gameObject.SetActive(true);
@@ -109,25 +110,21 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnMove(InputValue input) {
-        
         if (!moving) {
             moving = true;
-            Debug.Log("start moving");
+            // Debug.Log("start moving");
         } else {
             moving = false;
-            Debug.Log("stop moving");
+            // Debug.Log("stop moving");
         }
-        
+
 
         Vector2 inputVec = input.Get<Vector2>();
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
     }
 
     public void OnJump() {
-        if (groundedPlayer) {
-            jumping = true;
-            jumpMoveVec = moveVec;
-        }
+        jumping = true;
     }
 
     public void OnPickUp() {
@@ -174,12 +171,12 @@ public class PlayerController : NetworkBehaviour {
         if (!crouching) {
             Debug.Log("crouching");
             //reduce height
-             collid.height = reducedHeight;
+            collid.height = reducedHeight;
             crouching = true;
         } else {
             Debug.Log("not crouching");
             //add height
-             collid.height = normalHeight;
+            collid.height = normalHeight;
             crouching = false;
         }
     }
@@ -209,7 +206,7 @@ public class PlayerController : NetworkBehaviour {
 
             //TODO: This is inefficient way beyond belief. Please fix this abomination
             //TODO: Doesn't work, because the player has to animation component
-            
+
             if (!moving && !crouching && !running) {
                 animator.SetBool("isCrouchWalking", false);
                 animator.SetBool("isCrouchIdling", false);
@@ -241,7 +238,6 @@ public class PlayerController : NetworkBehaviour {
                 animator.SetBool("isCrouchIdling", false);
                 animator.SetBool("isCrouchWalking", true);
             }
-            
         }
     }
 
@@ -256,23 +252,28 @@ public class PlayerController : NetworkBehaviour {
     }
 
     private void MovePlayer() {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0) {
+            playerVelocity.y = 0f;
+        }
+
+        if (jumping) {
+            preJumpMoveVec = moveVec;
+        }
+
+        Vector3 executedMoveVec = moveVec;
+
         if (!groundedPlayer) {
-            controller.Move(transform.rotation * jumpMoveVec * (Time.deltaTime * playerSpeed));
-        } else {
-            if (moveVec != Vector3.zero) {
-                controller.Move(transform.rotation * moveVec * (Time.deltaTime * playerSpeed));
+            //Check again because the controller is bugged
+            if (!IsGrounded()) {
+                executedMoveVec = preJumpMoveVec;
             }
         }
 
-        groundedPlayer = controller.isGrounded;
-        if (!groundedPlayer) {
-            //Check again via Raycast as the player Controller is buggy
-            groundedPlayer = IsGrounded();
-        }
-
-        if (groundedPlayer && playerVelocity.y < 0.1f) {
-            playerVelocity.y = 0f;
-        }
+        Vector3 move = transform.rotation * executedMoveVec * (Time.deltaTime * playerSpeed);
+        //Reset y so player won't fly into the void
+        move.y = 0;
+        controller.Move(move);
 
         // Changes the height position of the player..
         if (jumping && groundedPlayer) {
@@ -283,7 +284,10 @@ public class PlayerController : NetworkBehaviour {
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if (jumping == false) {
+        //Sounds
+        if (jumping) {
+            slowWalking.volume = 0.0f;
+        } else {
             if (!walkingActive && moving) {
                 slowWalking.Play();
                 walkingActive = true;
@@ -295,8 +299,6 @@ public class PlayerController : NetworkBehaviour {
                 slowWalking.volume = 0.0f;
                 walkingActive = false;
             }
-        } else {
-            slowWalking.volume = 0.0f;
         }
     }
 
