@@ -259,8 +259,8 @@ public class PlayerController : NetworkBehaviour {
         transform.rotation = localRotation;
         
         //Copy position and y rotation to player model
-        playerModelTransform.rotation = Quaternion.Euler(0.0f,rotY * -1, 0.0f);
-        playerModelTransform.position = transform.position;
+        // playerModelTransform.rotation = Quaternion.Euler(0.0f,rotY * -1, 0.0f);
+        // playerModelTransform.position = transform.position;
     }
 
     private void MovePlayer() {
