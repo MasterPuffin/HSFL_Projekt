@@ -59,8 +59,6 @@ public class PlayerController : NetworkBehaviour {
     private NetworkedGameManager ngm;
     private PlayerInventory inventory;
 
-    private Transform playerModelTransform;
-
     void Start() {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
@@ -77,14 +75,11 @@ public class PlayerController : NetworkBehaviour {
             rotX = -rot.x;
             controller = GetComponent<CharacterController>();
 
-            /*
-            playerModelTransform = transform.Find("player_astronaut");
+            //Find the own player model and hide it, otherwise the camera would occasionally clip through the player
             //Yes it would be way better to not render this in the first place, however I can't be bothered to disable all the renderers
-            playerModelTransform.localScale = Vector3.zero;
-            */
-
-            //DEBUG
-            // Cursor.lockState = CursorLockMode.Locked;
+            transform.Find("player_astronaut").localScale = Vector3.zero;
+            
+            Cursor.lockState = CursorLockMode.Locked;
 
             //get collider of player
             //TODO: When enabled the camera is not working
@@ -257,10 +252,6 @@ public class PlayerController : NetworkBehaviour {
         
         Quaternion localRotation = Quaternion.Euler(rotX, rotY * -1, 0.0f);
         transform.rotation = localRotation;
-        
-        //Copy position and y rotation to player model
-        // playerModelTransform.rotation = Quaternion.Euler(0.0f,rotY * -1, 0.0f);
-        // playerModelTransform.position = transform.position;
     }
 
     private void MovePlayer() {
