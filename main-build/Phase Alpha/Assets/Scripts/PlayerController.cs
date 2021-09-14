@@ -18,7 +18,7 @@ public class PlayerController : NetworkBehaviour {
     private CharacterController controller;
     private Vector3 playerVelocity;
 
-    public bool groundedPlayer;
+    private bool groundedPlayer;
     private float distToGround;
 
     public float playerSpeed = 4.0f;
@@ -27,7 +27,7 @@ public class PlayerController : NetworkBehaviour {
 
     private float gravityValue = -9.81f;
 
-    public bool jumping = false;
+    private bool jumping = false;
     public bool pulling = false;
     private bool running = false;
     private bool crouching = false;
@@ -43,7 +43,7 @@ public class PlayerController : NetworkBehaviour {
     // get player animator
     private Animator animator;
 
-    public Vector3 moveVec;
+    private Vector3 moveVec;
     //Vector to continue the direction while jumping
     private Vector3 preJumpMoveVec;
 
@@ -58,6 +58,8 @@ public class PlayerController : NetworkBehaviour {
     private VivoxInstanceManager vivox;
     private NetworkedGameManager ngm;
     private PlayerInventory inventory;
+
+    private Transform playerModelTransform;
 
     void Start() {
         if (IsLocalPlayer) {
@@ -74,6 +76,12 @@ public class PlayerController : NetworkBehaviour {
             rotY = -rot.y;
             rotX = -rot.x;
             controller = GetComponent<CharacterController>();
+
+            /*
+            playerModelTransform = transform.Find("player_astronaut");
+            //Yes it would be way better to not render this in the first place, however I can't be bothered to disable all the renderers
+            playerModelTransform.localScale = Vector3.zero;
+            */
 
             //DEBUG
             // Cursor.lockState = CursorLockMode.Locked;
@@ -246,9 +254,13 @@ public class PlayerController : NetworkBehaviour {
         rotX += mouse.y * mouseSensitivity * Time.deltaTime;
 
         rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
-
+        
         Quaternion localRotation = Quaternion.Euler(rotX, rotY * -1, 0.0f);
         transform.rotation = localRotation;
+        
+        //Copy position and y rotation to player model
+        playerModelTransform.rotation = Quaternion.Euler(0.0f,rotY * -1, 0.0f);
+        playerModelTransform.position = transform.position;
     }
 
     private void MovePlayer() {
