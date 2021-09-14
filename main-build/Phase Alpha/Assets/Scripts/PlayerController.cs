@@ -79,9 +79,9 @@ public class PlayerController : NetworkBehaviour {
 
             //get collider of player
             //TODO: When enabled the camera is not working
-            // collid = GetComponent<CapsuleCollider>();
-            // normalHeight = collid.height;
-            // reducedHeight = 0.5f;
+             collid = GetComponent<CapsuleCollider>();
+             normalHeight = collid.height;
+             reducedHeight = 0.5f;
 
             //Enable camera attached to player
             transform.Find("PlayerCamera").gameObject.SetActive(true);
@@ -174,12 +174,12 @@ public class PlayerController : NetworkBehaviour {
         if (!crouching) {
             Debug.Log("crouching");
             //reduce height
-            // collid.height = reducedHeight;
+             collid.height = reducedHeight;
             crouching = true;
         } else {
             Debug.Log("not crouching");
             //add height
-            // collid.height = normalHeight;
+             collid.height = normalHeight;
             crouching = false;
         }
     }
@@ -209,7 +209,7 @@ public class PlayerController : NetworkBehaviour {
 
             //TODO: This is inefficient way beyond belief. Please fix this abomination
             //TODO: Doesn't work, because the player has to animation component
-            /*
+            
             if (!moving && !crouching && !running) {
                 animator.SetBool("isCrouchWalking", false);
                 animator.SetBool("isCrouchIdling", false);
@@ -241,7 +241,7 @@ public class PlayerController : NetworkBehaviour {
                 animator.SetBool("isCrouchIdling", false);
                 animator.SetBool("isCrouchWalking", true);
             }
-            */
+            
         }
     }
 
