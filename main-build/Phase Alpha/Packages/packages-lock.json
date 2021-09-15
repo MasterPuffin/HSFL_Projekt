@@ -78,7 +78,7 @@
         "com.unity.modules.animation": "1.0.0",
         "com.unity.nuget.mono-cecil": "1.10.1-preview.1"
       },
-      "hash": "023b64aeecaeee7461bdf989000ff9a796cfde1b"
+      "hash": "ee59d5fb560bbd6273260c1df144172914b38448"
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.10.1-preview.1",
@@ -184,6 +184,13 @@
         "com.unity.render-pipelines.core": "10.4.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "jillejr.newtonsoft.json-for-unity": {
+      "version": "12.0.201",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
