@@ -307,7 +307,7 @@ public class PlayerController : NetworkBehaviour {
 
     //Teleports a player as the setting of transform.position is only possible if
     //the Character Controller is disabled
-    private void TeleportPlayer(Vector3 position) {
+    public void TeleportPlayer(Vector3 position) {
         CharacterController cc = GetComponent<CharacterController>();
 
         cc.enabled = false;
@@ -320,5 +320,13 @@ public class PlayerController : NetworkBehaviour {
         Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity);
         // Debug.Log(hit.distance-distToGround);
         return hit.distance - distToGround < 0.35f;
+    }
+
+    //This function kills the player and teleports him to the last saved position
+    public void KillPlayer() {
+        Debug.Log("PlayerController: Killing Player");
+        SaveManager sm = gameObject.AddComponent<SaveManager>();
+        sm.Load(this);
+        Destroy(sm);
     }
 }
