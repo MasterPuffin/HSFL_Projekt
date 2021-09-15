@@ -324,6 +324,9 @@ public class PlayerController : NetworkBehaviour {
 
     //This function kills the player and teleports him to the last saved position
     public void KillPlayer() {
+        if (!IsLocalPlayer) {
+            return;
+        }
         Debug.Log("PlayerController: Killing Player");
         SaveManager sm = gameObject.AddComponent<SaveManager>();
         sm.Load(this);
