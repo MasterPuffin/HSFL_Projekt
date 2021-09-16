@@ -63,9 +63,8 @@ public class PlayerController : NetworkBehaviour {
         if (IsLocalPlayer) {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
             inventory = GetComponent<PlayerInventory>();
-
             animator = transform.GetChild(0).GetComponent<Animator>();
-
+            
             //TODO: When enabled the player falls through the map
             slowWalking.volume = 0.0f;
             fastWalking.volume = 0.0f;
