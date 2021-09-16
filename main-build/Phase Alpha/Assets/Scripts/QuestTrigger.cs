@@ -6,6 +6,7 @@ public class QuestTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool isTriggered;
+    //private GameObject[] Canvas;
 
     // Update is called once per frame
     void Start()
@@ -22,6 +23,13 @@ public class QuestTrigger : MonoBehaviour
         if (!isTriggered)
         {
             isTriggered = true;
+            /*
+            Canvas = GameObject.FindGameObjectsWithTag("PlayerCanvas");
+            foreach (var obj in Canvas)
+            {
+                obj.GetComponent<QuestController>().QuestAbgeschlossen();
+            }
+            */
             GameObject.Find("PlayerCanvas").GetComponent<QuestController>().QuestAbgeschlossen();
         }
     }

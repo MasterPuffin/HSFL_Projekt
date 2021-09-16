@@ -5,7 +5,7 @@ public class PickupableItem : MonoBehaviour {
     public string uiName;
     public string id;
     public GameObject audioManager;
-    public enum pickupTypes {Tablet, Card, Artefact, Other};
+    public enum pickupTypes {Tablet, Card, Artefact, Logbuch, Other};
     public pickupTypes pickupType;
 
     public void onPickup()
@@ -19,6 +19,11 @@ public class PickupableItem : MonoBehaviour {
                 GetComponent<TestOnPickup>().PickedUp();
                 break;
             case pickupTypes.Artefact:
+                GetComponent<QuestTrigger>().ManualTrigger();
+                GetComponent<ButtonDoor>().Button();
+                GameObject.Find("VolumeParent").transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            case pickupTypes.Logbuch:
                 GetComponent<QuestTrigger>().ManualTrigger();
                 break;
             default:

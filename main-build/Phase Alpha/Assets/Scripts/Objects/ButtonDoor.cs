@@ -6,11 +6,13 @@ public class ButtonDoor : MonoBehaviour
 {
     [SerializeField] private Animator door = null;
     [SerializeField] private Animator door2 = null;
+    public GameObject audioManager;
     public void Button()
     {
         Debug.Log("pressed button");
         if (door.GetBool("close"))
         {
+            audioManager.GetComponent<AudioManager>().OpenDoorSound();
             Debug.Log("door was closed");
             //door.Play("open gate", 0, 0.0f);
             door.SetBool("close", false);

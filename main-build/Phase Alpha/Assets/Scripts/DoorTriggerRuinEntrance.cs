@@ -26,6 +26,7 @@ public class DoorTriggerRuinEntrance : MonoBehaviour
             plateDoor.SetBool("close", false);
             plateDoor.SetBool("open", true);
             audioManager.GetComponent<AudioManager>().PressurePlateSound();
+            audioManager.GetComponent<AudioManager>().OpenDoorSound();
         }
     }
 

@@ -32,6 +32,7 @@ public class DoorTrigger : MonoBehaviour
                 if (soundPlayed == false)
                 {
                     audioManager.GetComponent<AudioManager>().PressurePlateSound();
+                    audioManager.GetComponent<AudioManager>().OpenDoorSound();
                     soundPlayed = true;
                 }
             }
