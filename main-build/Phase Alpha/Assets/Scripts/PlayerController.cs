@@ -14,7 +14,6 @@ using Random = UnityEngine.Random;
  */
 
 public class PlayerController : NetworkBehaviour {
-    
     private CharacterController controller;
     private Vector3 playerVelocity;
 
@@ -44,6 +43,7 @@ public class PlayerController : NetworkBehaviour {
     private Animator animator;
 
     private Vector3 moveVec;
+
     //Vector to continue the direction while jumping
     private Vector3 preJumpMoveVec;
 
@@ -64,7 +64,7 @@ public class PlayerController : NetworkBehaviour {
             ngm = GameObject.Find("NetworkedGameManager").GetComponent<NetworkedGameManager>();
             inventory = GetComponent<PlayerInventory>();
             animator = transform.GetChild(0).GetComponent<Animator>();
-            
+
             //TODO: When enabled the player falls through the map
             slowWalking.volume = 0.0f;
             fastWalking.volume = 0.0f;
@@ -77,7 +77,7 @@ public class PlayerController : NetworkBehaviour {
             //Find the own player model and hide it, otherwise the camera would occasionally clip through the player
             //Yes it would be way better to not render this in the first place, however I can't be bothered to disable all the renderers
             transform.Find("player_astronaut").localScale = Vector3.zero;
-            
+
             Cursor.lockState = CursorLockMode.Locked;
 
             //get collider of player
@@ -97,10 +97,13 @@ public class PlayerController : NetworkBehaviour {
             //Teleports player to spawn position
             //Offsets the position by a small random amount to prevent players standing in each
             //other when spawning
-            TeleportPlayer(
-                GameObject.Find("Network/PlayerSpawnPosition").transform.position +
-                new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 2.0f)
-            );
+            var spawn = GameObject.Find("Network/PlayerSpawnPosition");
+            if (spawn) {
+                TeleportPlayer(
+                    GameObject.Find("Network/PlayerSpawnPosition").transform.position +
+                    new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 2.0f)
+                );
+            }
         }
     }
 
@@ -248,7 +251,7 @@ public class PlayerController : NetworkBehaviour {
         rotX += mouse.y * mouseSensitivity * Time.deltaTime;
 
         rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
-        
+
         Quaternion localRotation = Quaternion.Euler(rotX, rotY * -1, 0.0f);
         transform.rotation = localRotation;
     }
@@ -321,14 +324,26 @@ public class PlayerController : NetworkBehaviour {
         return hit.distance - distToGround < 0.35f;
     }
 
+    private Vector3 savedPosition;
+    public void Save() {
+        if (!IsLocalPlayer) {
+            return;
+        }
+        savedPosition = transform.position;
+    }
+    
     //This function kills the player and teleports him to the last saved position
     public void KillPlayer() {
         if (!IsLocalPlayer) {
             return;
         }
+
         Debug.Log("PlayerController: Killing Player");
+        /*
         SaveManager sm = gameObject.AddComponent<SaveManager>();
         sm.Load(this);
         Destroy(sm);
+        */
+        TeleportPlayer(savedPosition);
     }
 }

@@ -31,7 +31,7 @@ public class VivoxManager : VivoxBehaviour
     {
         InitializeClient();
         SubscribeToVivoxEvents();
-        StartCoroutine(CheckIsTyping());
+        // StartCoroutine(CheckIsTyping());
         StartCoroutine(TypingTimer(0.3f));
     }
 
