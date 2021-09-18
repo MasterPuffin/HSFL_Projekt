@@ -452,7 +452,7 @@ MonoBehaviour:
   vivoxDomain: mt1s.vivox.com
   vivoxTokenIssuer: johann2071-hs30-dev
   vivoxTokenKey: lock149
-  showDebugMessages: 1
+  showDebugMessages: 0
   userName: 
   channelName: 
 --- !u!4 &778484174
