@@ -163,13 +163,7 @@ public class PlayerController : NetworkBehaviour {
     }
 
     public void OnPull() {
-        if (!pulling) {
-            pulling = true;
-        } else {
-            pulling = false;
-        }
-
-        Debug.Log("pulling");
+        
     }
 
     //TODO: Not working because collider is not working
@@ -189,12 +183,12 @@ public class PlayerController : NetworkBehaviour {
 
     public void OnRunning() {
         if (!running) {
-            Debug.Log("running");
+            //Debug.Log("running");
             playerSpeed += 5;
             running = true;
             fastWalking.volume = 1.0f;
         } else {
-            Debug.Log("not running");
+            //Debug.Log("not running");
             playerSpeed -= 5;
             running = false;
             fastWalking.volume = 0.0f;
