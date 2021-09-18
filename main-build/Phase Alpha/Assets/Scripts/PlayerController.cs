@@ -328,7 +328,7 @@ public class PlayerController : NetworkBehaviour {
         }
         Debug.Log("PlayerController: Killing Player");
         SaveManager sm = gameObject.AddComponent<SaveManager>();
-        sm.Load(this);
+        // sm.Load(this);
         Destroy(sm);
     }
 }
