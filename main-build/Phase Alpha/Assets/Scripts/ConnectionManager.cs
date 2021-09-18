@@ -15,6 +15,8 @@ public class ConnectionManager : MonoBehaviour {
     void OnGUI() {
         GUILayout.BeginArea(new Rect(10, 10, 300, 300));
         if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer) {
+            
+            Cursor.lockState = CursorLockMode.None;
             StartButtons();
         } else {
             StatusLabels();
