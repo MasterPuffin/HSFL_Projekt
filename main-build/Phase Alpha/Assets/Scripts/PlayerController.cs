@@ -98,9 +98,10 @@ public class PlayerController : NetworkBehaviour {
             //Offsets the position by a small random amount to prevent players standing in each
             //other when spawning
             var spawn = GameObject.Find("Network/PlayerSpawnPosition");
-            if (spawn) {
+            if (spawn != null) {
+                Debug.Log("teleporting player to spawn");
                 TeleportPlayer(
-                    GameObject.Find("Network/PlayerSpawnPosition").transform.position +
+                    spawn.transform.position +
                     new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 2.0f)
                 );
             }
