@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CI.QuickSave;
 using MLAPI;
 
 public class SaveManager : MonoBehaviour {
-/*    public void Save() {
+    public void Save() {
         Debug.Log("SaveManager: Saving");
         
         QuickSaveWriter writer = QuickSaveWriter.Create("Player");
@@ -18,5 +19,5 @@ public class SaveManager : MonoBehaviour {
         QuickSaveReader reader = QuickSaveReader.Create("Player");
         Vector3 position = reader.Read<Vector3>("Position");
         playerController.TeleportPlayer(position);
-    }*/
+    }
 }
